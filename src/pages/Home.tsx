@@ -1,8 +1,9 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, Github } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
+import heroTeamImg from "@/assets/hero-team.jpg";
 
 function HeroTicker() {
   const pastSessions = sessions.filter((s) => s.status === "past");
@@ -13,11 +14,44 @@ function HeroTicker() {
       <div className="ticker-scroll flex whitespace-nowrap">
         {items.map((s, i) => (
           <span key={i} className="mx-8 font-mono text-xs text-muted-foreground">
-            [{s.number}] {s.speakers.join(", ")} — {s.topic_en}
+            [{s.number}] {s.speakers.join(", ")} | {s.topic_en}
           </span>
         ))}
       </div>
     </div>
+  );
+}
+
+function HeroImageBanner() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      <img
+        src={heroTeamImg}
+        alt="Professionals collaborating in a tech workspace"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+      <div className="absolute inset-0 bg-surface-dark/70" />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        <p className="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+          {t.format.label}
+        </p>
+        <h2 className="font-heading text-2xl md:text-4xl font-bold text-surface-dark-foreground max-w-3xl">
+          {t.about_section.heading}
+        </h2>
+        <p className="mt-4 text-sm md:text-base text-surface-dark-foreground/70 max-w-2xl">
+          {t.about_section.body.slice(0, 180)}...
+        </p>
+        <Link
+          to="/about"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+        >
+          {t.hero.cta_secondary} <ArrowRight size={16} />
+        </Link>
+      </div>
+    </section>
   );
 }
 
@@ -62,6 +96,53 @@ function UpcomingSessionCard({ session }: { session: Session }) {
       <div className="mt-3 text-xs text-muted-foreground">
         <span>{t.upcoming.speakers_label}: {session.speakers.join(", ")}</span>
         {session.host && <span className="ml-4">{t.upcoming.host_label}: {session.host}</span>}
+      </div>
+    </div>
+  );
+}
+
+function VideoPreviewCard({ session }: { session: Session }) {
+  const { lang } = useLanguage();
+
+  return (
+    <div className="border border-border rounded-sm overflow-hidden group">
+      <div className="relative aspect-video bg-surface-dark flex items-center justify-center cursor-pointer">
+        <div className="absolute inset-0 bg-surface-dark/90 flex flex-col items-center justify-center transition-colors group-hover:bg-surface-dark/80">
+          <span className="font-mono text-primary text-xs mb-2">{session.number}</span>
+          <h4 className="font-heading text-sm md:text-base font-medium text-surface-dark-foreground text-center px-4 max-w-md">
+            {lang === "en" ? session.topic_en : session.topic_es}
+          </h4>
+          <p className="text-xs text-muted-foreground mt-2">{session.speakers.join(", ")}</p>
+        </div>
+        {session.recording_url && (
+          <a
+            href={session.recording_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-10 flex items-center justify-center"
+          >
+            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center transition-transform group-hover:scale-110">
+              <Play size={24} className="text-primary-foreground ml-1" fill="currentColor" />
+            </div>
+          </a>
+        )}
+      </div>
+      <div className="p-4 flex items-center justify-between">
+        <p className="text-xs text-muted-foreground">
+          {format(new Date(session.date), "MMM d, yyyy")}
+        </p>
+        <div className="flex gap-3">
+          {session.slides_url && (
+            <a
+              href={session.slides_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs font-medium text-foreground hover:opacity-80 transition-opacity"
+            >
+              <FileText size={14} />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -122,6 +203,7 @@ function FeaturedSession() {
 export default function Home() {
   const { t, lang } = useLanguage();
   const upcomingSessions = sessions.filter((s) => s.status === "upcoming");
+  const pastWithRecordings = sessions.filter((s) => s.status === "past" && s.recording_url);
 
   return (
     <main className="pt-16">
@@ -151,6 +233,9 @@ export default function Home() {
         </div>
         <HeroTicker />
       </section>
+
+      {/* Hero Image Banner */}
+      <HeroImageBanner />
 
       {/* About */}
       <section className="section-spacing">
@@ -209,7 +294,15 @@ export default function Home() {
       {/* Upcoming */}
       <section className="section-spacing">
         <div className="container-page">
-          <h2 className="font-heading text-3xl font-medium mb-12">{t.upcoming.heading}</h2>
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="font-heading text-3xl font-medium">{t.upcoming.heading}</h2>
+            <Link
+              to="/sessions"
+              className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+            >
+              {t.hero.cta_primary} <ArrowRight size={16} />
+            </Link>
+          </div>
           <div className="grid gap-6 md:grid-cols-2">
             {upcomingSessions.map((s) => (
               <UpcomingSessionCard key={s.number} session={s} />
@@ -218,8 +311,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured */}
-      <FeaturedSession />
+      {/* Video Previews */}
+      {pastWithRecordings.length > 0 && (
+        <section className="section-spacing bg-secondary">
+          <div className="container-page">
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="font-heading text-3xl font-medium">{t.featured.label}</h2>
+              <Link
+                to="/sessions"
+                className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+              >
+                {t.sessions_page?.title || "Sessions"} <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {pastWithRecordings.slice(0, 3).map((s) => (
+                <VideoPreviewCard key={s.number} session={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Newsletter CTA */}
       <section className="section-spacing">
