@@ -4,6 +4,8 @@ export const es = {
     sessions: "Sesiones",
     about: "Acerca de",
     newsletter: "Newsletter",
+    back: "Volver",
+    become_speaker: "Quiero presentar",
   },
   hero: {
     headline:

@@ -4,6 +4,8 @@ export const en = {
     sessions: "Sessions",
     about: "About",
     newsletter: "Newsletter",
+    back: "Back",
+    become_speaker: "Become a Speaker",
   },
   hero: {
     headline: "Where Wizeline's expertise becomes everyone's advantage.",

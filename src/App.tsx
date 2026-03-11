@@ -9,7 +9,6 @@ import { Footer } from "@/components/layout/Footer";
 import Home from "./pages/Home";
 import Sessions from "./pages/Sessions";
 import About from "./pages/About";
-import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -28,7 +27,6 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/about" element={<About />} />
-            <Route path="/newsletter" element={<Newsletter />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
