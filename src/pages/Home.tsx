@@ -22,38 +22,6 @@ function HeroTicker() {
   );
 }
 
-function HeroImageBanner() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-      <img
-        src={heroTeamImg}
-        alt="Professionals collaborating in a tech workspace"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-      <div className="absolute inset-0 bg-surface-dark/70" />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <p className="font-mono text-xs text-primary uppercase tracking-widest mb-4">
-          {t.format.label}
-        </p>
-        <h2 className="font-heading text-2xl md:text-4xl font-bold text-surface-dark-foreground max-w-3xl">
-          {t.about_section.heading}
-        </h2>
-        <p className="mt-4 text-sm md:text-base text-surface-dark-foreground/70 max-w-2xl">
-          {t.about_section.body.slice(0, 180)}...
-        </p>
-        <Link
-          to="/about"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
-        >
-          {t.hero.cta_secondary} <ArrowRight size={16} />
-        </Link>
-      </div>
-    </section>
-  );
-}
 
 function UpcomingSessionCard({ session }: { session: Session }) {
   const { t, lang } = useLanguage();
@@ -207,25 +175,32 @@ export default function Home() {
 
   return (
     <main className="pt-16">
-      {/* Hero */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-6">
-        <div className="max-w-3xl">
-          <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+      {/* Hero with background image */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-4 sm:px-6">
+        <img
+          src={heroTeamImg}
+          alt="Professionals collaborating in a tech workspace"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-surface-dark/75" />
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight tracking-tight md:text-6xl text-surface-dark-foreground">
             {t.hero.headline}
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-surface-dark-foreground/70 max-w-2xl mx-auto">
             {t.hero.subtitle}
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/sessions"
-              className="inline-flex items-center rounded-sm bg-primary px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
+              className="inline-flex items-center rounded-sm bg-primary px-5 sm:px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_primary}
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center rounded-sm border border-foreground px-6 py-3 text-sm font-body font-medium text-foreground transition-opacity hover:opacity-80"
+              className="inline-flex items-center rounded-sm border border-surface-dark-foreground px-5 sm:px-6 py-3 text-sm font-body font-medium text-surface-dark-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_secondary}
             </Link>
@@ -233,9 +208,6 @@ export default function Home() {
         </div>
         <HeroTicker />
       </section>
-
-      {/* Hero Image Banner */}
-      <HeroImageBanner />
 
       {/* About */}
       <section className="section-spacing">
