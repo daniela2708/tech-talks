@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, TrendingUp, Code, BarChart3 } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
