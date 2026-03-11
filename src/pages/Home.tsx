@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, Code, BarChart3 } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, Code, BarChart3, User, Send, MessageCircle } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
@@ -21,7 +21,6 @@ function HeroTicker() {
     </div>
   );
 }
-
 
 function UpcomingSessionCard({ session }: { session: Session }) {
   const { t, lang } = useLanguage();
@@ -123,7 +122,7 @@ export default function Home() {
 
   return (
     <main className="pt-16">
-      {/* Hero with background image */}
+      {/* Hero */}
       <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-4 sm:px-6">
         <img
           src={heroTeamImg}
@@ -140,12 +139,12 @@ export default function Home() {
             {t.hero.subtitle}
           </p>
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <Link
-              to="/sessions"
+            <a
+              href="#upcoming"
               className="inline-flex items-center rounded-sm bg-primary px-5 sm:px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_primary}
-            </Link>
+            </a>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"
               target="_blank"
@@ -160,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="section-spacing">
+      <section id="about" className="section-spacing">
         <div className="container-page">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
@@ -169,14 +168,14 @@ export default function Home() {
               <h2 className="font-heading text-2xl font-medium mt-2">{t.about_section.heading}</h2>
             </div>
             <div className="md:col-span-8 md:col-start-5">
-              <p className="text-muted-foreground leading-relaxed">{t.about_section.body}</p>
+              <p className="text-muted-foreground leading-relaxed">{t.about_page.origin_body}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Format */}
-      <section className="section-spacing">
+      <section id="format" className="section-spacing">
         <div className="container-page">
           <div className="mb-12">
             <span className="font-mono text-primary text-2xl font-medium">{t.format.label}</span>
@@ -223,8 +222,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming */}
-      <section className="section-spacing">
+      {/* Upcoming Sessions */}
+      <section id="upcoming" className="section-spacing">
         <div className="container-page">
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-heading text-3xl font-medium">{t.upcoming.heading}</h2>
@@ -232,7 +231,7 @@ export default function Home() {
               to="/sessions"
               className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
             >
-              {t.hero.cta_primary} <ArrowRight size={16} />
+              {t.sessions_page.title} <ArrowRight size={16} />
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -243,9 +242,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Previews */}
+      {/* Past Recordings */}
       {pastWithRecordings.length > 0 && (
-        <section className="section-spacing bg-secondary">
+        <section id="recordings" className="section-spacing bg-secondary">
           <div className="container-page">
             <div className="flex items-center justify-between mb-12">
               <h2 className="font-heading text-3xl font-medium">{t.featured.label}</h2>
@@ -253,7 +252,7 @@ export default function Home() {
                 to="/sessions"
                 className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
               >
-                {t.sessions_page?.title || "Sessions"} <ArrowRight size={16} />
+                {t.sessions_page.title} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -264,6 +263,56 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* Organizer & Get Involved */}
+      <section id="get-involved" className="section-spacing">
+        <div className="container-page">
+          {/* Organizer */}
+          <div className="mb-16">
+            <h2 className="font-heading text-2xl font-medium mb-8">{t.about_page.organizer_heading}</h2>
+            <div className="border border-border rounded-sm p-6 max-w-md">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+                  <User size={20} className="text-muted-foreground" />
+                </div>
+                <div>
+                  <p className="font-heading font-medium">{t.about_page.organizer_name}</p>
+                  <p className="text-sm text-muted-foreground">{t.about_page.organizer_role}</p>
+                  <p className="text-xs font-mono text-muted-foreground mt-1">{t.about_page.organizer_slack}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Cards */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-primary rounded-sm p-6 hover:opacity-80 transition-opacity"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <Send size={18} className="text-primary" />
+                <h3 className="font-heading text-lg font-medium">{t.about_page.cta_submit_title}</h3>
+              </div>
+              <p className="text-sm text-muted-foreground">{t.about_page.cta_submit_body}</p>
+            </a>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeqiy4PaQV0YfyHUZnxBz2YVI0cWMFJCqhqakNsnlBpH2rlZQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border rounded-sm p-6 hover:opacity-80 transition-opacity"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <MessageCircle size={18} className="text-muted-foreground" />
+                <h3 className="font-heading text-lg font-medium">{t.about_page.cta_feedback_title}</h3>
+              </div>
+              <p className="text-sm text-muted-foreground">{t.about_page.cta_feedback_body}</p>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

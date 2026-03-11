@@ -11,7 +11,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isHome = location.pathname === "/";
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -23,10 +22,22 @@ export function Header() {
   }, [location.pathname]);
 
   const navLinks = [
-    { to: "/", label: t.nav.home },
-    { to: "/about", label: t.nav.about },
-    { to: "/sessions", label: t.nav.sessions },
+    { id: "about", label: t.nav.about },
+    { id: "upcoming", label: t.nav.sessions },
+    { id: "get-involved", label: t.nav.get_involved },
   ];
+
+  const scrollToSection = (id: string) => {
+    if (!isHome) {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+    setMenuOpen(false);
+  };
 
   return (
     <header
@@ -57,17 +68,13 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`text-sm font-body font-medium transition-opacity hover:opacity-80 ${
-                location.pathname === link.to
-                  ? "text-foreground"
-                  : "text-muted-foreground"
-              }`}
+            <button
+              key={link.id}
+              onClick={() => scrollToSection(link.id)}
+              className="text-sm font-body font-medium text-muted-foreground transition-opacity hover:opacity-80"
             >
               {link.label}
-            </Link>
+            </button>
           ))}
         </nav>
 
@@ -82,7 +89,6 @@ export function Header() {
             {t.nav.become_speaker}
           </a>
           <LanguageToggle />
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-foreground"
@@ -107,17 +113,13 @@ export function Header() {
               </button>
             )}
             {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-sm font-body font-medium ${
-                  location.pathname === link.to
-                    ? "text-foreground"
-                    : "text-muted-foreground"
-                }`}
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-sm font-body font-medium text-muted-foreground text-left"
               >
                 {link.label}
-              </Link>
+              </button>
             ))}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"

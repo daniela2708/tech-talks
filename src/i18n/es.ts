@@ -6,6 +6,7 @@ export const es = {
     newsletter: "Newsletter",
     back: "Volver",
     become_speaker: "Quiero presentar",
+    get_involved: "Participa",
   },
   hero: {
     headline:
