@@ -11,7 +11,7 @@ export const en = {
   hero: {
     headline: "Where Wizeline's expertise becomes everyone's advantage.",
     subtitle:
-      "A knowledge-sharing space built by engineers, data professionals, and designers: for the entire organization.",
+      "A knowledge-sharing space where anyone across the organization can learn, present, and grow together.",
     cta_primary: "Explore Sessions",
     cta_secondary: "Become a Speaker",
   },

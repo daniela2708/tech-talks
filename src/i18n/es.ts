@@ -12,7 +12,7 @@ export const es = {
     headline:
       "Donde la experiencia de Wizeline se convierte en ventaja colectiva.",
     subtitle:
-      "Un espacio de transferencia de conocimiento construido por ingenieros, profesionales de datos y diseñadores, para toda la organización.",
+      "Un espacio donde cualquier persona de la organización puede aprender, presentar y crecer junto a sus compañeros.",
     cta_primary: "Ver sesiones",
     cta_secondary: "Quiero presentar",
   },
