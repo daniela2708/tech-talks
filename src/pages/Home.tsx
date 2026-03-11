@@ -10,7 +10,7 @@ function HeroTicker() {
   const items = [...pastSessions, ...pastSessions];
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-border py-3">
+    <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-surface-dark py-3">
       <div className="ticker-scroll flex whitespace-nowrap">
         {items.map((s, i) => (
           <span key={i} className="mx-8 font-mono text-xs text-muted-foreground">
