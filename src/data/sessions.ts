@@ -54,8 +54,8 @@ export const sessions: Session[] = [
     date: "2026-02-26",
     tags: ["GenAI", "MLOps"],
     status: "past",
-    recording_url: "#",
-    slides_url: "#",
+    recording_url: "https://drive.google.com/file/d/1pm_6C0sZxy1u-GVWSFcWGespOQ1w0c80/view?usp=drive_link",
+    slides_url: "https://docs.google.com/presentation/d/1DqfGdMQEQn_hmbRI9n9LkJ6GgAibaW_ZAyj6AYtzEsM/edit?usp=drive_link",
   },
   {
     number: "04",
@@ -66,9 +66,9 @@ export const sessions: Session[] = [
     date: "2026-02-04",
     tags: ["MLOps", "Data Engineering"],
     status: "past",
-    recording_url: "#",
-    slides_url: "#",
-    github_url: "#",
+    recording_url: "https://drive.google.com/file/d/1mjXmB5RKOUroqSuSYfhaW81UigqrAxDn/view?usp=drive_link",
+    slides_url: "https://docs.google.com/presentation/d/1N3bnEmsXuz0H8gBKEwcwhThazWKDKC5uD--SilWntH8/edit?usp=sharing",
+    github_url: "https://github.com/yharyarias-wize/demo-ai-talk-mlops-docker",
   },
   {
     number: "03",
@@ -80,8 +80,8 @@ export const sessions: Session[] = [
     date: "2024-12-03",
     tags: ["Data Engineering"],
     status: "past",
-    recording_url: "#",
-    slides_url: "#",
+    recording_url: "https://drive.google.com/file/d/1MjKDewdkplmN-Nn9SUrvsiV3j8hEA012/view?usp=sharing",
+    slides_url: "https://docs.google.com/presentation/d/1Yh9kGD_uBlh7dQFFlEWwJxlko374RImNDOM554kCVmY/edit?usp=sharing",
   },
   {
     number: "02",
@@ -92,8 +92,8 @@ export const sessions: Session[] = [
     date: "2024-11-19",
     tags: ["Visualization"],
     status: "past",
-    recording_url: "#",
-    slides_url: "#",
+    recording_url: "https://drive.google.com/file/d/14eb7l7tREdFYEdI80O_4tUM9BPAS_ONO/view?usp=sharing",
+    slides_url: "https://docs.google.com/presentation/d/1RKIYF6nMTdFKz7Y4d4iiCl8Ptyr310zj/edit?usp=sharing&ouid=117648850710748495484&rtpof=true&sd=true",
   },
   {
     number: "01",
@@ -105,8 +105,8 @@ export const sessions: Session[] = [
     date: "2024-11-05",
     tags: ["GenAI"],
     status: "past",
-    recording_url: "#",
-    slides_url: "#",
+    recording_url: "https://drive.google.com/file/d/1HgX9cT0cfHt6a5_Hc95IMeivuMbr78Sh/view?usp=sharing",
+    slides_url: "https://docs.google.com/presentation/d/1zujZgIdvNVFyX_pmtd2McSlbHiH7oA4NAGeUxA2kUmM/edit?usp=sharing",
   },
 ];
 

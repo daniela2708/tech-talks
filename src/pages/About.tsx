@@ -1,5 +1,5 @@
 import { useLanguage } from "@/hooks/useLanguage";
-import { User, MessageSquare, Send, MessageCircle } from "lucide-react";
+import { User, Send, MessageCircle } from "lucide-react";
 
 export default function About() {
   const { t } = useLanguage();
@@ -53,20 +53,30 @@ export default function About() {
 
           {/* CTA Cards */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="border-2 border-primary rounded-sm p-6">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-primary rounded-sm p-6 hover:opacity-80 transition-opacity"
+            >
               <div className="flex items-center gap-2 mb-3">
                 <Send size={18} className="text-primary" />
                 <h3 className="font-heading text-lg font-medium">{t.about_page.cta_submit_title}</h3>
               </div>
               <p className="text-sm text-muted-foreground">{t.about_page.cta_submit_body}</p>
-            </div>
-            <div className="border border-border rounded-sm p-6">
+            </a>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeqiy4PaQV0YfyHUZnxBz2YVI0cWMFJCqhqakNsnlBpH2rlZQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border rounded-sm p-6 hover:opacity-80 transition-opacity"
+            >
               <div className="flex items-center gap-2 mb-3">
                 <MessageCircle size={18} className="text-muted-foreground" />
                 <h3 className="font-heading text-lg font-medium">{t.about_page.cta_feedback_title}</h3>
               </div>
               <p className="text-sm text-muted-foreground">{t.about_page.cta_feedback_body}</p>
-            </div>
+            </a>
           </div>
         </div>
       </section>

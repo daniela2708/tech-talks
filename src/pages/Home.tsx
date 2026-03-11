@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, TrendingUp, Code, BarChart3 } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, Code, BarChart3 } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
@@ -116,60 +116,8 @@ function VideoPreviewCard({ session }: { session: Session }) {
   );
 }
 
-function FeaturedSession() {
-  const { t, lang } = useLanguage();
-  const featured = sessions.find((s) => s.status === "past");
-  if (!featured) return null;
-
-  return (
-    <section className="section-spacing bg-secondary">
-      <div className="container-page">
-        <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-6 block">
-          {t.featured.label}
-        </span>
-        <div className="grid gap-8 md:grid-cols-2 items-center">
-          <div>
-            <span className="font-mono text-primary text-sm">{featured.number}</span>
-            <p className="text-sm text-muted-foreground mt-1">
-              {format(new Date(featured.date), "MMMM d, yyyy")}
-            </p>
-            <p className="text-sm text-muted-foreground">{featured.speakers.join(", ")}</p>
-          </div>
-          <div>
-            <h3 className="font-heading text-xl font-medium mb-4">
-              {lang === "en" ? featured.topic_en : featured.topic_es}
-            </h3>
-            <div className="flex gap-4">
-              {featured.recording_url && (
-                <a
-                  href={featured.recording_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
-                >
-                  <Play size={16} /> {t.featured.watch}
-                </a>
-              )}
-              {featured.slides_url && (
-                <a
-                  href={featured.slides_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
-                >
-                  <FileText size={16} /> {t.featured.slides}
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const upcomingSessions = sessions.filter((s) => s.status === "upcoming");
   const pastWithRecordings = sessions.filter((s) => s.status === "past" && s.recording_url);
 
@@ -198,12 +146,14 @@ export default function Home() {
             >
               {t.hero.cta_primary}
             </Link>
-            <Link
-              to="/about"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center rounded-sm border border-surface-dark-foreground px-5 sm:px-6 py-3 text-sm font-body font-medium text-surface-dark-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_secondary}
-            </Link>
+            </a>
           </div>
         </div>
         <HeroTicker />
@@ -314,31 +264,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {/* Newsletter CTA */}
-      <section className="section-spacing">
-        <div className="container-page max-w-xl mx-auto text-center">
-          <h2 className="font-heading text-3xl font-bold mb-4">{t.newsletter_section.heading}</h2>
-          <p className="text-muted-foreground mb-8">{t.newsletter_section.subtitle}</p>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <input
-              type="email"
-              placeholder={t.newsletter_section.placeholder}
-              className="flex-1 rounded-sm border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-1 focus:ring-primary"
-            />
-            <button
-              type="submit"
-              className="rounded-sm bg-primary px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
-            >
-              {t.newsletter_section.button}
-            </button>
-          </form>
-          <p className="mt-4 text-xs text-muted-foreground">{t.newsletter_section.disclaimer}</p>
-        </div>
-      </section>
     </main>
   );
 }
