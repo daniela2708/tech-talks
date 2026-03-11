@@ -14,6 +14,7 @@ export interface Session {
   recording_url?: string;
   slides_url?: string;
   github_url?: string;
+  image?: string;
 }
 
 export const sessions: Session[] = [
@@ -30,6 +31,7 @@ export const sessions: Session[] = [
   },
   {
     number: "06",
+    image: "/Data & AI March 12-2.png",
     topic_en: "Vulnerable AI Minds: The Scalability Paradox",
     topic_es: "Mentes de IA vulnerables: la paradoja de la escalabilidad",
     description_en:
@@ -56,6 +58,7 @@ export const sessions: Session[] = [
     status: "past",
     recording_url: "https://drive.google.com/file/d/1pm_6C0sZxy1u-GVWSFcWGespOQ1w0c80/view?usp=drive_link",
     slides_url: "https://docs.google.com/presentation/d/1DqfGdMQEQn_hmbRI9n9LkJ6GgAibaW_ZAyj6AYtzEsM/edit?usp=drive_link",
+    image: "/Internal - Data & AI Tech Talks - Co-2.png",
   },
   {
     number: "04",
@@ -69,6 +72,7 @@ export const sessions: Session[] = [
     recording_url: "https://drive.google.com/file/d/1mjXmB5RKOUroqSuSYfhaW81UigqrAxDn/view?usp=drive_link",
     slides_url: "https://docs.google.com/presentation/d/1N3bnEmsXuz0H8gBKEwcwhThazWKDKC5uD--SilWntH8/edit?usp=sharing",
     github_url: "https://github.com/yharyarias-wize/demo-ai-talk-mlops-docker",
+    image: "/Yhary Eng v1.png",
   },
   {
     number: "03",
@@ -82,6 +86,7 @@ export const sessions: Session[] = [
     status: "past",
     recording_url: "https://drive.google.com/file/d/1MjKDewdkplmN-Nn9SUrvsiV3j8hEA012/view?usp=sharing",
     slides_url: "https://docs.google.com/presentation/d/1Yh9kGD_uBlh7dQFFlEWwJxlko374RImNDOM554kCVmY/edit?usp=sharing",
+    image: "/Data & AI Tech Talks - Co Interno-4 (1).png",
   },
   {
     number: "02",
@@ -94,6 +99,7 @@ export const sessions: Session[] = [
     status: "past",
     recording_url: "https://drive.google.com/file/d/14eb7l7tREdFYEdI80O_4tUM9BPAS_ONO/view?usp=sharing",
     slides_url: "https://docs.google.com/presentation/d/1RKIYF6nMTdFKz7Y4d4iiCl8Ptyr310zj/edit?usp=sharing&ouid=117648850710748495484&rtpof=true&sd=true",
+    image: "/DaniRios.png",
   },
   {
     number: "01",

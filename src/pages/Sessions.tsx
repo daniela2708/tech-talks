@@ -85,9 +85,22 @@ export default function Sessions() {
             {filtered.map((session) => (
               <div
                 key={session.number}
-                className={`border border-border rounded-sm p-6 ${view === "list" ? "flex items-start justify-between gap-6" : ""}`}
+                className={`border border-border rounded-sm overflow-hidden ${view === "list" ? "flex items-start" : ""}`}
               >
-                <div className={view === "list" ? "flex-1" : ""}>
+                {view === "grid" && (
+                  <div className="w-full h-[36rem] overflow-hidden bg-black flex items-center justify-center">
+                    {session.image ? (
+                      <img
+                        src={session.image}
+                        alt={session.topic_en}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <span className="font-mono text-muted-foreground/30 text-4xl font-bold">{session.number}</span>
+                    )}
+                  </div>
+                )}
+                <div className={`p-6 ${view === "list" ? "flex-1" : ""}`}>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
                     <span
@@ -116,34 +129,63 @@ export default function Sessions() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Action buttons */}
+                  {(session.status === "past" || session.status === "upcoming") && (
+                    <div className="flex flex-wrap gap-2 mt-5">
+                      {session.status === "past" && (
+                        <>
+                          {session.recording_url && (
+                            <a
+                              href={session.recording_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm bg-primary text-primary-foreground hover:opacity-85 transition-opacity"
+                            >
+                              <Play size={12} fill="currentColor" /> {t.sessions_page.watch}
+                            </a>
+                          )}
+                          {session.slides_url && (
+                            <a
+                              href={session.slides_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
+                            >
+                              <FileText size={12} /> {t.sessions_page.slides}
+                            </a>
+                          )}
+                          {session.github_url && (
+                            <a
+                              href={session.github_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
+                            >
+                              <Github size={12} /> {t.sessions_page.code}
+                            </a>
+                          )}
+                        </>
+                      )}
+                      {session.status === "upcoming" && (
+                        <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+                          <CalendarPlus size={12} /> {t.sessions_page.add_calendar}
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
 
-                <div className={`flex gap-3 ${view === "list" ? "items-center" : "mt-4"}`}>
-                  {session.status === "past" && (
-                    <>
-                      {session.recording_url && (
-                        <a href={session.recording_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium text-foreground hover:opacity-80 transition-opacity" title={t.sessions_page.watch}>
-                          <Play size={14} /> {view === "grid" ? t.sessions_page.watch : ""}
-                        </a>
-                      )}
-                      {session.slides_url && (
-                        <a href={session.slides_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium text-foreground hover:opacity-80 transition-opacity" title={t.sessions_page.slides}>
-                          <FileText size={14} /> {view === "grid" ? t.sessions_page.slides : ""}
-                        </a>
-                      )}
-                      {session.github_url && (
-                        <a href={session.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium text-foreground hover:opacity-80 transition-opacity" title={t.sessions_page.code}>
-                          <Github size={14} /> {view === "grid" ? t.sessions_page.code : ""}
-                        </a>
-                      )}
-                    </>
-                  )}
-                  {session.status === "upcoming" && (
-                    <button className="flex items-center gap-1.5 text-xs font-medium text-primary hover:opacity-80 transition-opacity">
-                      <CalendarPlus size={14} /> {t.sessions_page.add_calendar}
-                    </button>
-                  )}
-                </div>
+                {/* List view: side thumbnail */}
+                {view === "list" && session.image && (
+                  <div className="w-36 shrink-0 self-stretch overflow-hidden bg-muted">
+                    <img
+                      src={session.image}
+                      alt={session.topic_en}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
