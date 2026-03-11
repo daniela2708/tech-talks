@@ -214,6 +214,7 @@ export default function Home() {
         <div className="container-page">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
+              <Users size={28} className="text-primary mb-3" />
               <span className="font-mono text-primary text-2xl font-medium">{t.about_section.label}</span>
               <h2 className="font-heading text-2xl font-medium mt-2">{t.about_section.heading}</h2>
             </div>
