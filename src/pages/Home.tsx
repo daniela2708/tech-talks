@@ -253,13 +253,22 @@ export default function Home() {
         <div className="container-page">
           <h2 className="font-heading text-3xl font-medium mb-12">{t.why.heading}</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            {t.why.items.map((item) => (
-              <div key={item.number}>
-                <span className="font-mono text-primary text-sm">{item.number}</span>
-                <h3 className="font-heading text-lg font-medium mt-1 mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-              </div>
-            ))}
+            {t.why.items.map((item, idx) => {
+              const icons = [Lightbulb, Code, BarChart3, MessageSquare];
+              const Icon = icons[idx % icons.length];
+              return (
+                <div key={item.number} className="flex gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <Icon size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-primary text-sm">{item.number}</span>
+                    <h3 className="font-heading text-lg font-medium mt-1 mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
