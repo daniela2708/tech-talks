@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, TrendingUp, Code, BarChart3 } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
@@ -214,6 +214,7 @@ export default function Home() {
         <div className="container-page">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
+              <Users size={28} className="text-primary mb-3" />
               <span className="font-mono text-primary text-2xl font-medium">{t.about_section.label}</span>
               <h2 className="font-heading text-2xl font-medium mt-2">{t.about_section.heading}</h2>
             </div>
@@ -252,13 +253,22 @@ export default function Home() {
         <div className="container-page">
           <h2 className="font-heading text-3xl font-medium mb-12">{t.why.heading}</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            {t.why.items.map((item) => (
-              <div key={item.number}>
-                <span className="font-mono text-primary text-sm">{item.number}</span>
-                <h3 className="font-heading text-lg font-medium mt-1 mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-              </div>
-            ))}
+            {t.why.items.map((item, idx) => {
+              const icons = [Lightbulb, Code, BarChart3, MessageSquare];
+              const Icon = icons[idx % icons.length];
+              return (
+                <div key={item.number} className="flex gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <Icon size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-primary text-sm">{item.number}</span>
+                    <h3 className="font-heading text-lg font-medium mt-1 mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
