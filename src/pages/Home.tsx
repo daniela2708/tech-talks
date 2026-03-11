@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, Code, BarChart3, User, Send, MessageCircle } from "lucide-react";
+import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, MessageSquare, Code, BarChart3, User, Send, MessageCircle, Layout } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
@@ -10,11 +10,14 @@ function HeroTicker() {
   const items = [...pastSessions, ...pastSessions];
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-surface-dark py-3">
+    <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-black/60 backdrop-blur-sm border-t border-white/10 py-3">
       <div className="ticker-scroll flex whitespace-nowrap">
         {items.map((s, i) => (
-          <span key={i} className="mx-8 font-mono text-xs text-muted-foreground">
-            [{s.number}] {s.speakers.join(", ")} | {s.topic_en}
+          <span key={i} className="mx-8 font-mono text-xs text-white/50">
+            <span className="text-primary mr-2">[{s.number}]</span>
+            {s.speakers.join(", ")}
+            <span className="text-white/30 mx-2">|</span>
+            {s.topic_en}
           </span>
         ))}
       </div>
@@ -28,58 +31,79 @@ function UpcomingSessionCard({ session }: { session: Session }) {
   const isSoon = daysUntil >= 0 && daysUntil <= 7;
 
   return (
-    <div className="border border-border p-6 rounded-sm">
-      <div className="flex items-start justify-between mb-4">
-        <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
-        {isSoon && (
-          <span className="font-mono text-xs text-primary border border-primary px-2 py-0.5 rounded-sm">
-            {t.upcoming.happening_soon}
-          </span>
+    <div className="group relative border border-border rounded-sm overflow-hidden hover:border-primary/50 transition-colors duration-300">
+      {/* Top accent bar */}
+      <div className="h-0.5 bg-primary" />
+      <div className="p-6">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex items-baseline gap-2">
+            <span className="font-mono text-primary text-sm font-medium bg-primary/8 px-2 py-0.5 rounded-sm border border-primary/20 flex-shrink-0">
+              {session.number}
+            </span>
+            <h3 className="font-heading text-lg font-medium group-hover:text-primary transition-colors duration-200">
+              {lang === "en" ? session.topic_en : session.topic_es}
+            </h3>
+          </div>
+          {isSoon && (
+            <span className="font-mono text-xs text-primary border border-primary/40 bg-primary/8 px-2 py-0.5 rounded-sm animate-pulse flex-shrink-0 ml-2">
+              {t.upcoming.happening_soon}
+            </span>
+          )}
+        </div>
+        {(lang === "en" ? session.description_en : session.description_es) && (
+          <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+            {lang === "en" ? session.description_en : session.description_es}
+          </p>
         )}
-      </div>
-      <h3 className="font-heading text-lg font-medium mb-2">
-        {lang === "en" ? session.topic_en : session.topic_es}
-      </h3>
-      {(lang === "en" ? session.description_en : session.description_es) && (
-        <p className="text-sm text-muted-foreground mb-4">
-          {lang === "en" ? session.description_en : session.description_es}
-        </p>
-      )}
-      <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
-        <span className="flex items-center gap-1">
-          <Calendar size={14} /> {format(new Date(session.date), "MMM d, yyyy")}
-        </span>
-        {session.time && (
-          <span className="flex items-center gap-1">
-            <Clock size={14} /> {session.time}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2.5 py-1 rounded-sm">
+            <Calendar size={12} className="text-primary" />
+            {format(new Date(session.date), "MMM d, yyyy")}
           </span>
-        )}
-        {session.location && (
-          <span className="flex items-center gap-1">
-            <MapPin size={14} /> {session.location}
-          </span>
-        )}
-      </div>
-      <div className="mt-3 text-xs text-muted-foreground">
-        <span>{t.upcoming.speakers_label}: {session.speakers.join(", ")}</span>
-        {session.host && <span className="ml-4">{t.upcoming.host_label}: {session.host}</span>}
+          {session.time && (
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2.5 py-1 rounded-sm">
+              <Clock size={12} className="text-primary" />
+              {session.time}
+            </span>
+          )}
+          {session.location && (
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2.5 py-1 rounded-sm">
+              <MapPin size={12} className="text-primary" />
+              {session.location}
+            </span>
+          )}
+        </div>
+        <div className="border-t border-border pt-4 flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">
+            <span className="text-foreground/60">{t.upcoming.speakers_label}:</span>{" "}
+            <span className="font-medium text-foreground/80">{session.speakers.join(", ")}</span>
+          </p>
+          {session.host && (
+            <p className="text-xs text-muted-foreground">
+              <span className="text-foreground/60">{t.upcoming.host_label}:</span>{" "}
+              <span className="font-medium">{session.host}</span>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
 function VideoPreviewCard({ session }: { session: Session }) {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
-    <div className="border border-border rounded-sm overflow-hidden group">
-      <div className="relative aspect-video bg-surface-dark flex items-center justify-center cursor-pointer">
-        <div className="absolute inset-0 bg-surface-dark/90 flex flex-col items-center justify-center transition-colors group-hover:bg-surface-dark/80">
-          <span className="font-mono text-primary text-xs mb-2">{session.number}</span>
-          <h4 className="font-heading text-sm md:text-base font-medium text-surface-dark-foreground text-center px-4 max-w-md">
+    <div className="border border-border rounded-sm overflow-hidden group hover:border-primary/40 transition-colors duration-300">
+      <div className="relative aspect-video bg-surface-dark flex items-center justify-center cursor-pointer overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50 flex flex-col items-center justify-center transition-all duration-300 group-hover:from-black/80 group-hover:via-black/60 group-hover:to-black/40">
+          <span className="font-mono text-primary text-xs mb-3 border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
+            {session.number}
+          </span>
+          <h4 className="font-heading text-sm md:text-base font-medium text-white text-center px-4 max-w-md leading-snug">
             {lang === "en" ? session.topic_en : session.topic_es}
           </h4>
-          <p className="text-xs text-muted-foreground mt-2">{session.speakers.join(", ")}</p>
+          <p className="text-xs text-white/50 mt-2">{session.speakers.join(", ")}</p>
         </div>
         {session.recording_url && (
           <a
@@ -88,14 +112,14 @@ function VideoPreviewCard({ session }: { session: Session }) {
             rel="noopener noreferrer"
             className="absolute inset-0 z-10 flex items-center justify-center"
           >
-            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center transition-transform group-hover:scale-110">
-              <Play size={24} className="text-primary-foreground ml-1" fill="currentColor" />
+            <div className="w-14 h-14 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-primary/50">
+              <Play size={22} className="text-white ml-1" fill="currentColor" />
             </div>
           </a>
         )}
       </div>
-      <div className="p-4 flex items-center justify-between">
-        <p className="text-xs text-muted-foreground">
+      <div className="p-4 flex items-center justify-between bg-card">
+        <p className="text-xs text-muted-foreground font-mono">
           {format(new Date(session.date), "MMM d, yyyy")}
         </p>
         <div className="flex gap-3">
@@ -104,9 +128,10 @@ function VideoPreviewCard({ session }: { session: Session }) {
               href={session.slides_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs font-medium text-foreground hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               <FileText size={14} />
+              <span>{t.featured.slides}</span>
             </a>
           )}
         </div>
@@ -114,6 +139,7 @@ function VideoPreviewCard({ session }: { session: Session }) {
     </div>
   );
 }
+
 
 export default function Home() {
   const { t } = useLanguage();
@@ -155,6 +181,7 @@ export default function Home() {
             </a>
           </div>
         </div>
+
         <HeroTicker />
       </section>
 
@@ -163,34 +190,56 @@ export default function Home() {
         <div className="container-page">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Users size={28} className="text-primary mb-3" />
-              <span className="font-mono text-primary text-2xl font-medium">{t.about_section.label}</span>
-              <h2 className="font-heading text-2xl font-medium mt-2">{t.about_section.heading}</h2>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
+                  <Users size={20} className="text-primary" />
+                </div>
+                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.about_section.label}</span>
+              </div>
+              <h2 className="font-heading text-3xl font-medium">{t.about_section.heading}</h2>
             </div>
-            <div className="md:col-span-8 md:col-start-5">
-              <p className="text-muted-foreground leading-relaxed">{t.about_page.origin_body}</p>
+            <div className="md:col-span-7 md:col-start-5 md:border-l md:border-border md:pl-8">
+              <p className="text-muted-foreground leading-relaxed text-base">{t.about_page.origin_body}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Format */}
-      <section id="format" className="section-spacing">
+      <section id="format" className="section-spacing bg-secondary/50">
         <div className="container-page">
           <div className="mb-12">
-            <span className="font-mono text-primary text-2xl font-medium">{t.format.label}</span>
-            <h2 className="font-heading text-2xl font-medium mt-2">{t.format.heading}</h2>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
+                <Layout size={20} className="text-primary" />
+              </div>
+              <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.format.label}</span>
+            </div>
+            <h2 className="font-heading text-3xl font-medium">{t.format.heading}</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { icon: Calendar, title: t.format.card1_title, body: t.format.card1_body },
-              { icon: MapPin, title: t.format.card2_title, body: t.format.card2_body },
-              { icon: Clock, title: t.format.card3_title, body: t.format.card3_body },
+              { icon: Calendar, title: t.format.card1_title, body: t.format.card1_body, num: "01" },
+              { icon: MapPin, title: t.format.card2_title, body: t.format.card2_body, num: "02" },
+              { icon: Clock, title: t.format.card3_title, body: t.format.card3_body, num: "03" },
             ].map((card) => (
-              <div key={card.title} className="border border-border p-6 rounded-sm">
-                <card.icon size={20} className="text-muted-foreground mb-4" />
-                <h3 className="font-heading text-base font-medium mb-2">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.body}</p>
+              <div
+                key={card.title}
+                className="group relative border border-border bg-background p-6 rounded-sm overflow-hidden hover:border-primary/40 transition-colors duration-300"
+              >
+                {/* Ghost number */}
+                <span className="absolute top-3 right-4 font-mono text-6xl font-bold text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
+                  {card.num}
+                </span>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="inline-flex items-center justify-center w-9 h-9 rounded-sm bg-primary/8 border border-primary/15">
+                      <card.icon size={18} className="text-primary" />
+                    </div>
+                    <h3 className="font-heading text-base font-bold">{card.title}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -200,21 +249,21 @@ export default function Home() {
       {/* Why Participate */}
       <section className="bg-surface-dark text-surface-dark-foreground section-spacing">
         <div className="container-page">
-          <h2 className="font-heading text-3xl font-medium mb-12">{t.why.heading}</h2>
-          <div className="grid gap-8 md:grid-cols-2">
+          <h2 className="font-heading text-3xl font-medium mb-14">{t.why.heading}</h2>
+          <div className="grid gap-10 md:grid-cols-2">
             {t.why.items.map((item, idx) => {
               const icons = [Lightbulb, Code, BarChart3, MessageSquare];
               const Icon = icons[idx % icons.length];
               return (
-                <div key={item.number} className="flex gap-4">
-                  <div className="flex-shrink-0 mt-1">
-                    <Icon size={20} className="text-primary" />
+                <div key={item.number} className="group border-l border-white/10 pl-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-6 h-6 rounded-sm bg-primary/15 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors duration-200">
+                      <Icon size={12} className="text-primary" />
+                    </div>
+                    <span className="font-mono text-primary text-xs tracking-widest font-bold">{item.number}</span>
+                    <h3 className="font-heading text-lg font-medium">{item.title}</h3>
                   </div>
-                  <div>
-                    <span className="font-mono text-primary text-sm">{item.number}</span>
-                    <h3 className="font-heading text-lg font-medium mt-1 mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-                  </div>
+                  <p className="text-sm text-white/50 leading-relaxed">{item.body}</p>
                 </div>
               );
             })}
@@ -225,32 +274,47 @@ export default function Home() {
       {/* Upcoming Sessions */}
       <section id="upcoming" className="section-spacing">
         <div className="container-page">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="font-heading text-3xl font-medium">{t.upcoming.heading}</h2>
+          <div className="flex items-end justify-between mb-12">
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.upcoming.label}</span>
+              <h2 className="font-heading text-3xl font-medium">{t.upcoming.heading}</h2>
+            </div>
             <Link
               to="/sessions"
-              className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+              className="flex items-center gap-1.5 text-sm font-medium text-primary hover:opacity-80 transition-opacity mb-1"
             >
               {t.sessions_page.title} <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {upcomingSessions.map((s) => (
-              <UpcomingSessionCard key={s.number} session={s} />
-            ))}
-          </div>
+          {upcomingSessions.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2">
+              {upcomingSessions.map((s) => (
+                <UpcomingSessionCard key={s.number} session={s} />
+              ))}
+            </div>
+          ) : (
+            <div className="border border-dashed border-border rounded-sm p-12 text-center">
+              <p className="text-muted-foreground font-mono text-sm">{t.upcoming.empty}</p>
+              <Link to="/sessions" className="inline-flex items-center gap-1.5 text-sm text-primary mt-4 hover:opacity-80">
+                {t.upcoming.view_all} <ArrowRight size={14} />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Past Recordings */}
       {pastWithRecordings.length > 0 && (
-        <section id="recordings" className="section-spacing bg-secondary">
+        <section id="recordings" className="section-spacing bg-secondary/40">
           <div className="container-page">
-            <div className="flex items-center justify-between mb-12">
-              <h2 className="font-heading text-3xl font-medium">{t.featured.label}</h2>
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.featured.library_label}</span>
+                <h2 className="font-heading text-3xl font-medium mt-2">{t.featured.label}</h2>
+              </div>
               <Link
                 to="/sessions"
-                className="flex items-center gap-1 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+                className="flex items-center gap-1.5 text-sm font-medium text-primary hover:opacity-80 transition-opacity mb-1"
               >
                 {t.sessions_page.title} <ArrowRight size={16} />
               </Link>
@@ -267,12 +331,12 @@ export default function Home() {
       {/* Organizer & Get Involved */}
       <section id="get-involved" className="section-spacing">
         <div className="container-page">
-          {/* Organizer */}
-          <div className="mb-16">
-            <h2 className="font-heading text-2xl font-medium mb-8">{t.about_page.organizer_heading}</h2>
-            <div className="border border-border rounded-sm p-6 max-w-md">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Organizer */}
+            <div className="border border-border rounded-sm p-6">
+              <span className="font-mono text-primary text-xs tracking-widest uppercase">{t.about_page.organizer_label}</span>
+              <div className="flex items-center gap-4 mt-4">
+                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
                   <User size={20} className="text-muted-foreground" />
                 </div>
                 <div>
@@ -282,10 +346,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* CTA Cards */}
-          <div className="grid gap-6 md:grid-cols-2">
+            {/* CTA Cards */}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSctfSbZkvOvnFYagrXtqlmA8PS9LGo2fW58db-7w55hdSBwFQ/viewform"
               target="_blank"

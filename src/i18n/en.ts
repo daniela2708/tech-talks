@@ -60,15 +60,19 @@ export const en = {
   },
   upcoming: {
     heading: "Upcoming Sessions",
+    label: "Schedule",
     happening_soon: "Happening soon",
     remote: "Remote",
     speakers_label: "Speakers",
     host_label: "Host",
+    empty: "No upcoming sessions scheduled.",
+    view_all: "View all sessions",
   },
   featured: {
-    label: "Latest Session",
+    label: "Latest Sessions",
+    library_label: "Library",
     watch: "Watch Recording",
-    slides: "View Slides",
+    slides: "Slides",
   },
   newsletter_section: {
     heading: "Stay in the loop.",
@@ -102,6 +106,7 @@ export const en = {
     origin_body:
       "Data & AI Tech Talks emerged from a simple observation within the Data & AI Guild at Wizeline: exceptional knowledge was being created across teams and projects, but it lacked a structured channel for broader dissemination. The initiative was designed to fill that gap by creating a recurring, open forum where practitioners could present real work, share lessons learned, and exchange technical perspectives. What began as a small experiment has become a growing platform that connects people, ideas, and expertise across the organization.",
     mission_heading: "Mission Pillars",
+    organizer_label: "Organizer",
     organizer_heading: "Organizer",
     organizer_name: "Santi Merchán",
     organizer_role: "Host & Organizer",
