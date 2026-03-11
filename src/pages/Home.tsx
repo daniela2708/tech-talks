@@ -207,25 +207,32 @@ export default function Home() {
 
   return (
     <main className="pt-16">
-      {/* Hero */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-6">
-        <div className="max-w-3xl">
-          <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+      {/* Hero with background image */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-4 sm:px-6">
+        <img
+          src={heroTeamImg}
+          alt="Professionals collaborating in a tech workspace"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-surface-dark/75" />
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight tracking-tight md:text-6xl text-surface-dark-foreground">
             {t.hero.headline}
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-surface-dark-foreground/70 max-w-2xl mx-auto">
             {t.hero.subtitle}
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/sessions"
-              className="inline-flex items-center rounded-sm bg-primary px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
+              className="inline-flex items-center rounded-sm bg-primary px-5 sm:px-6 py-3 text-sm font-body font-medium text-primary-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_primary}
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center rounded-sm border border-foreground px-6 py-3 text-sm font-body font-medium text-foreground transition-opacity hover:opacity-80"
+              className="inline-flex items-center rounded-sm border border-surface-dark-foreground px-5 sm:px-6 py-3 text-sm font-body font-medium text-surface-dark-foreground transition-opacity hover:opacity-80"
             >
               {t.hero.cta_secondary}
             </Link>
@@ -233,9 +240,6 @@ export default function Home() {
         </div>
         <HeroTicker />
       </section>
-
-      {/* Hero Image Banner */}
-      <HeroImageBanner />
 
       {/* About */}
       <section className="section-spacing">
