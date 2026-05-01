@@ -3,6 +3,7 @@ export const en = {
     home: "Home",
     sessions: "Sessions",
     about: "About",
+    articles: "Blog",
     newsletter: "Newsletter",
     back: "Back",
     become_speaker: "Become a Speaker",

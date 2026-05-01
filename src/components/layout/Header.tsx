@@ -25,6 +25,7 @@ export function Header() {
     { id: "about", label: t.nav.about },
     { id: "upcoming", label: t.nav.sessions },
     { id: "get-involved", label: t.nav.get_involved },
+    { id: "articles", label: t.nav.articles },
   ];
 
   const scrollToSection = (id: string) => {

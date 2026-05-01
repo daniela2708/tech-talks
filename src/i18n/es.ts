@@ -3,6 +3,7 @@ export const es = {
     home: "Inicio",
     sessions: "Sesiones",
     about: "Acerca de",
+    articles: "Blog",
     newsletter: "Newsletter",
     back: "Volver",
     become_speaker: "Quiero presentar",
