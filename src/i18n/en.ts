@@ -58,6 +58,31 @@ export const en = {
       },
     ],
   },
+  articles_teaser: {
+    label: "03",
+    status: "Launching soon",
+    heading: "Soon: community articles worth bookmarking.",
+    subtitle:
+      "We are preparing a new layer for Tech Talks: written pieces with practical ideas, technical perspectives, and lessons we want to keep circulating beyond each live session.",
+    items: [
+      {
+        title: "Field notes from real work",
+        body: "Short articles born from experiments, project decisions, and technical patterns that deserve a clearer, reusable format.",
+      },
+      {
+        title: "Topics people actually want to revisit",
+        body: "GenAI, MLOps, data engineering, security, visualization, and the kind of lessons that spark follow-up conversations across teams.",
+      },
+      {
+        title: "Knowledge that stays in motion",
+        body: "The goal is to turn good talks into resources the community can reread, share, and use as a starting point for deeper exploration.",
+      },
+    ],
+    callout_label: "What to expect",
+    callout_body:
+      "The first wave is already in motion. We will soon start publishing thoughtful articles designed to open conversation, share criteria, and strengthen the broader technical community.",
+    callout_badge: "First drop coming soon",
+  },
   upcoming: {
     heading: "Upcoming Sessions",
     label: "Schedule",

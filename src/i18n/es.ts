@@ -59,6 +59,31 @@ export const es = {
       },
     ],
   },
+  articles_teaser: {
+    label: "03",
+    status: "Lanzamiento próximo",
+    heading: "Pronto: artículos para la comunidad que valdrá la pena guardar.",
+    subtitle:
+      "Estamos preparando una nueva capa para Tech Talks: piezas escritas con ideas prácticas, perspectivas técnicas y aprendizajes que queremos seguir moviendo más allá de cada sesión en vivo.",
+    items: [
+      {
+        title: "Notas de campo del trabajo real",
+        body: "Artículos breves nacidos de experimentos, decisiones de proyecto y patrones técnicos que merecen un formato más claro y reutilizable.",
+      },
+      {
+        title: "Temas a los que sí queremos volver",
+        body: "GenAI, MLOps, data engineering, seguridad, visualización y ese tipo de aprendizajes que suelen abrir nuevas conversaciones entre equipos.",
+      },
+      {
+        title: "Conocimiento que sigue circulando",
+        body: "La idea es convertir buenas charlas en recursos que la comunidad pueda releer, compartir y usar como punto de partida para explorar más a fondo.",
+      },
+    ],
+    callout_label: "Lo que viene",
+    callout_body:
+      "La primera tanda ya está en camino. Muy pronto empezaremos a publicar artículos pensados para abrir conversación, compartir criterio y fortalecer a la comunidad técnica en un formato más durable.",
+    callout_badge: "Primera entrega muy pronto",
+  },
   upcoming: {
     heading: "Próximas sesiones",
     label: "Agenda",

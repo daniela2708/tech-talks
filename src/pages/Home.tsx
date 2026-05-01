@@ -148,6 +148,7 @@ export default function Home() {
   const { t } = useLanguage();
   const upcomingSessions = sessions.filter((s) => s.status === "upcoming");
   const pastWithRecordings = sessions.filter((s) => s.status === "past" && s.recording_url);
+  const articleIcons = [FileText, Lightbulb, MessageSquare];
 
   return (
     <main className="pt-16">
@@ -270,6 +271,71 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Articles Teaser */}
+      <section className="section-spacing bg-secondary/35 overflow-hidden">
+        <div className="container-page">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
+                  <FileText size={20} className="text-primary" />
+                </div>
+                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.articles_teaser.label}</span>
+              </div>
+              <span className="inline-flex items-center rounded-sm border border-primary/30 bg-primary/8 px-3 py-1 font-mono text-xs uppercase tracking-widest text-primary">
+                {t.articles_teaser.status}
+              </span>
+              <h2 className="font-heading text-3xl font-medium mt-5 leading-tight">
+                {t.articles_teaser.heading}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-base mt-4">
+                {t.articles_teaser.subtitle}
+              </p>
+            </div>
+
+            <div className="lg:col-span-8 grid gap-4 md:grid-cols-3">
+              {t.articles_teaser.items.map((item, idx) => {
+                const Icon = articleIcons[idx % articleIcons.length];
+
+                return (
+                  <div
+                    key={item.title}
+                    className="group relative rounded-sm border border-border bg-background p-6 overflow-hidden hover:border-primary/35 transition-colors duration-300"
+                  >
+                    <span className="absolute right-4 top-3 font-mono text-5xl font-bold text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
+                      {`0${idx + 1}`}
+                    </span>
+                    <div className="relative z-10">
+                      <div className="inline-flex items-center justify-center w-9 h-9 rounded-sm bg-primary/8 border border-primary/15 mb-4">
+                        <Icon size={18} className="text-primary" />
+                      </div>
+                      <h3 className="font-heading text-base font-bold mb-3">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-sm border border-primary/20 bg-primary/6 p-6 md:p-7">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-3xl">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-primary mb-2">
+                  {t.articles_teaser.callout_label}
+                </p>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  {t.articles_teaser.callout_body}
+                </p>
+              </div>
+              <span className="inline-flex w-fit items-center rounded-sm border border-primary/30 px-3 py-2 font-mono text-xs uppercase tracking-widest text-primary">
+                {t.articles_teaser.callout_badge}
+              </span>
+            </div>
           </div>
         </div>
       </section>
