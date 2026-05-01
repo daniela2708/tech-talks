@@ -4,6 +4,7 @@ import { Calendar, MapPin, Clock, Play, FileText, ArrowRight, Users, Lightbulb, 
 import { sessions, type Session } from "@/data/sessions";
 import { format, differenceInDays } from "date-fns";
 import heroTeamImg from "@/assets/hero-team.jpg";
+import { getTrustedExternalHref } from "@/lib/security";
 
 function HeroTicker() {
   const pastSessions = sessions.filter((s) => s.status === "past");
@@ -92,6 +93,8 @@ function UpcomingSessionCard({ session }: { session: Session }) {
 
 function VideoPreviewCard({ session }: { session: Session }) {
   const { lang, t } = useLanguage();
+  const recordingHref = getTrustedExternalHref(session.recording_url);
+  const slidesHref = getTrustedExternalHref(session.slides_url);
 
   return (
     <div className="border border-border rounded-sm overflow-hidden group hover:border-primary/40 transition-colors duration-300">
@@ -105,9 +108,9 @@ function VideoPreviewCard({ session }: { session: Session }) {
           </h4>
           <p className="text-xs text-white/50 mt-2">{session.speakers.join(", ")}</p>
         </div>
-        {session.recording_url && (
+        {recordingHref && (
           <a
-            href={session.recording_url}
+            href={recordingHref}
             target="_blank"
             rel="noopener noreferrer"
             className="absolute inset-0 z-10 flex items-center justify-center"
@@ -123,9 +126,9 @@ function VideoPreviewCard({ session }: { session: Session }) {
           {format(new Date(session.date), "MMM d, yyyy")}
         </p>
         <div className="flex gap-3">
-          {session.slides_url && (
+          {slidesHref && (
             <a
-              href={session.slides_url}
+              href={slidesHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"

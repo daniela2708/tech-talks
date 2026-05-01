@@ -3,6 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { sessions, allTags } from "@/data/sessions";
 import { Play, FileText, Github, CalendarPlus, LayoutGrid, List } from "lucide-react";
 import { format } from "date-fns";
+import { getTrustedExternalHref } from "@/lib/security";
 
 type StatusFilter = "all" | "upcoming" | "past";
 type ViewMode = "grid" | "list";
@@ -83,110 +84,118 @@ export default function Sessions() {
           {/* Sessions */}
           <div className={view === "grid" ? "grid gap-6 md:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
             {filtered.map((session) => (
-              <div
-                key={session.number}
-                className={`border border-border rounded-sm overflow-hidden ${view === "list" ? "flex items-start" : "flex flex-col"}`}
-              >
-                {view === "grid" && (
-                  <div className="w-full aspect-[3/4] overflow-hidden bg-black flex items-center justify-center shrink-0">
-                    {session.image ? (
-                      <img
-                        src={session.image}
-                        alt={session.topic_en}
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <span className="font-mono text-muted-foreground/30 text-4xl font-bold">{session.number}</span>
-                    )}
-                  </div>
-                )}
-                <div className={`p-6 ${view === "list" ? "flex-1" : "flex flex-col flex-1"}`}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
-                    <span
-                      className={`font-mono text-xs px-2 py-0.5 rounded-sm border ${
-                        session.status === "upcoming"
-                          ? "border-primary text-primary"
-                          : "border-muted-foreground/30 text-muted-foreground bg-muted"
-                      }`}
-                    >
-                      {session.status === "upcoming" ? t.sessions_page.upcoming : t.sessions_page.past}
-                    </span>
-                  </div>
-                  <h3 className="font-heading text-base font-medium mb-1">
-                    {lang === "en" ? session.topic_en : session.topic_es}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {session.speakers.join(", ")}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {format(new Date(session.date), "MMM d, yyyy")}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mt-3">
-                    {session.tags.map((tag) => (
-                      <span key={tag} className="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              (() => {
+                const recordingHref = getTrustedExternalHref(session.recording_url);
+                const slidesHref = getTrustedExternalHref(session.slides_url);
+                const githubHref = getTrustedExternalHref(session.github_url);
 
-                  {/* Action buttons */}
-                  {(session.status === "past" || session.status === "upcoming") && (
-                    <div className="flex flex-wrap gap-1.5 mt-auto pt-5">
-                      {session.status === "past" && (
-                        <>
-                          {session.recording_url && (
-                            <a
-                              href={session.recording_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm bg-primary text-primary-foreground hover:opacity-85 transition-opacity"
-                            >
-                              <Play size={12} fill="currentColor" /> {t.sessions_page.watch}
-                            </a>
+                return (
+                  <div
+                    key={session.number}
+                    className={`border border-border rounded-sm overflow-hidden ${view === "list" ? "flex items-start" : "flex flex-col"}`}
+                  >
+                    {view === "grid" && (
+                      <div className="w-full aspect-[3/4] overflow-hidden bg-black flex items-center justify-center shrink-0">
+                        {session.image ? (
+                          <img
+                            src={session.image}
+                            alt={session.topic_en}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <span className="font-mono text-muted-foreground/30 text-4xl font-bold">{session.number}</span>
+                        )}
+                      </div>
+                    )}
+                    <div className={`p-6 ${view === "list" ? "flex-1" : "flex flex-col flex-1"}`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
+                        <span
+                          className={`font-mono text-xs px-2 py-0.5 rounded-sm border ${
+                            session.status === "upcoming"
+                              ? "border-primary text-primary"
+                              : "border-muted-foreground/30 text-muted-foreground bg-muted"
+                          }`}
+                        >
+                          {session.status === "upcoming" ? t.sessions_page.upcoming : t.sessions_page.past}
+                        </span>
+                      </div>
+                      <h3 className="font-heading text-base font-medium mb-1">
+                        {lang === "en" ? session.topic_en : session.topic_es}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        {session.speakers.join(", ")}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {format(new Date(session.date), "MMM d, yyyy")}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {session.tags.map((tag) => (
+                          <span key={tag} className="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action buttons */}
+                      {(session.status === "past" || session.status === "upcoming") && (
+                        <div className="flex flex-wrap gap-1.5 mt-auto pt-5">
+                          {session.status === "past" && (
+                            <>
+                              {recordingHref && (
+                                <a
+                                  href={recordingHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm bg-primary text-primary-foreground hover:opacity-85 transition-opacity"
+                                >
+                                  <Play size={12} fill="currentColor" /> {t.sessions_page.watch}
+                                </a>
+                              )}
+                              {slidesHref && (
+                                <a
+                                  href={slidesHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
+                                >
+                                  <FileText size={12} /> {t.sessions_page.slides}
+                                </a>
+                              )}
+                              {githubHref && (
+                                <a
+                                  href={githubHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
+                                >
+                                  <Github size={12} /> {t.sessions_page.code}
+                                </a>
+                              )}
+                            </>
                           )}
-                          {session.slides_url && (
-                            <a
-                              href={session.slides_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
-                            >
-                              <FileText size={12} /> {t.sessions_page.slides}
-                            </a>
+                          {session.status === "upcoming" && (
+                            <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+                              <CalendarPlus size={12} /> {t.sessions_page.add_calendar}
+                            </button>
                           )}
-                          {session.github_url && (
-                            <a
-                              href={session.github_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
-                            >
-                              <Github size={12} /> {t.sessions_page.code}
-                            </a>
-                          )}
-                        </>
-                      )}
-                      {session.status === "upcoming" && (
-                        <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
-                          <CalendarPlus size={12} /> {t.sessions_page.add_calendar}
-                        </button>
+                        </div>
                       )}
                     </div>
-                  )}
-                </div>
 
-                {/* List view: side thumbnail */}
-                {view === "list" && session.image && (
-                  <div className="w-36 shrink-0 self-stretch overflow-hidden bg-muted">
-                    <img
-                      src={session.image}
-                      alt={session.topic_en}
-                      className="w-full h-full object-cover"
-                    />
+                    {/* List view: side thumbnail */}
+                    {view === "list" && session.image && (
+                      <div className="w-36 shrink-0 self-stretch overflow-hidden bg-muted">
+                        <img
+                          src={session.image}
+                          alt={session.topic_en}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                );
+              })()
             ))}
           </div>
         </div>
