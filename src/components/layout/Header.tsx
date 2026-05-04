@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageToggle } from "./LanguageToggle";
@@ -40,6 +40,15 @@ export function Header() {
     setMenuOpen(false);
   };
 
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setMenuOpen(false);
+
+    if (isHome) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-16 bg-background transition-[border-color] duration-200 ${
@@ -58,10 +67,14 @@ export function Header() {
               {t.nav.back}
             </button>
           )}
-          <Link to="/" className={`flex items-center gap-2 ${!isHome ? "hidden md:flex border-l border-border pl-4" : ""}`}>
+          <Link
+            to="/"
+            onClick={handleHomeClick}
+            className={`flex items-center gap-2 ${!isHome ? "hidden md:flex border-l border-border pl-4" : ""}`}
+          >
             <img src="/wizelinered.svg" alt="Wizeline" className="h-7 w-auto" />
-            <span className="font-heading text-sm font-medium uppercase tracking-widest text-foreground">
-              Tech Talks
+            <span className="font-heading text-sm font-medium tracking-[0.2em] text-foreground">
+              AI at Work
             </span>
           </Link>
         </div>

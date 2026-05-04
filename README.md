@@ -1,4 +1,4 @@
-# Data & AI Tech Talks | Wizeline
+# AI at Work | Wizeline
 
 ## Project info
 

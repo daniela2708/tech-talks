@@ -20,7 +20,7 @@ export const es = {
   about_section: {
     label: "01",
     heading: "Sobre la iniciativa",
-    body: "Data & AI Tech Talks nació dentro del Data & AI Guild y ha crecido hasta convertirse en un foro abierto para toda la organización de Wizeline. La premisa es simple: profesionales talentosos en distintos proyectos e industrias están construyendo procesos, sistemas y conocimientos de los que otros pueden aprender. Esta iniciativa crea el puente. Las sesiones cubren desde MLOps y GenAI hasta arquitectura de datos, seguridad e inteligencia visual. Todos son bienvenidos a participar, y cualquier persona con algo valioso que compartir es bienvenida a presentar.",
+    body: "AI at Work nació dentro del Data & AI Guild y ha crecido hasta convertirse en un foro abierto para toda la organización de Wizeline. La premisa es simple: profesionales talentosos en distintos proyectos e industrias están construyendo procesos, sistemas y conocimientos de los que otros pueden aprender. Esta iniciativa crea el puente. Las sesiones cubren desde MLOps y GenAI hasta arquitectura de datos, seguridad e inteligencia visual. Todos son bienvenidos a participar, y cualquier persona con algo valioso que compartir es bienvenida a presentar.",
   },
   format: {
     label: "02",
@@ -65,7 +65,7 @@ export const es = {
     status: "Lanzamiento próximo",
     heading: "Pronto: artículos para la comunidad que valdrá la pena guardar.",
     subtitle:
-      "Estamos preparando una nueva capa para Tech Talks: piezas escritas con ideas prácticas, perspectivas técnicas y aprendizajes que queremos seguir moviendo más allá de cada sesión en vivo.",
+      "Estamos preparando una nueva capa para AI at Work: piezas escritas con ideas prácticas, perspectivas técnicas y aprendizajes que queremos seguir moviendo más allá de cada sesión en vivo.",
     items: [
       {
         title: "Notas de campo del trabajo real",
@@ -131,7 +131,7 @@ export const es = {
     title: "Acerca de",
     origin_heading: "Cómo empezó",
     origin_body:
-      "Data & AI Tech Talks surgió de una observación simple dentro del Data & AI Guild en Wizeline: se estaba creando conocimiento excepcional en distintos equipos y proyectos, pero carecía de un canal estructurado para una difusión más amplia. La iniciativa fue diseñada para llenar ese vacío creando un foro abierto y recurrente donde los profesionales pudieran presentar trabajo real, compartir lecciones aprendidas e intercambiar perspectivas técnicas. Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
+      "AI at Work surgió de una observación simple dentro del Data & AI Guild en Wizeline: se estaba creando conocimiento excepcional en distintos equipos y proyectos, pero carecía de un canal estructurado para una difusión más amplia. La iniciativa fue diseñada para llenar ese vacío creando un foro abierto y recurrente donde los profesionales pudieran presentar trabajo real, compartir lecciones aprendidas e intercambiar perspectivas técnicas. Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
     mission_heading: "Pilares de la misión",
     organizer_label: "Organizador",
     organizer_heading: "Organizador",
@@ -143,7 +143,7 @@ export const es = {
       "Tienes una idea para una sesión? Comparte tu propuesta y el equipo te ayudará a darle forma.",
     cta_feedback_title: "Dar feedback",
     cta_feedback_body:
-      "Tu opinión ayuda a mejorar el formato, los temas y la experiencia general de Tech Talks.",
+      "Tu opinión ayuda a mejorar el formato, los temas y la experiencia general de AI at Work.",
   },
   newsletter_page: {
     title: "Archivo del Newsletter",
