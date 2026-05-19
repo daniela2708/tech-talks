@@ -299,9 +299,13 @@ function NNDivider() {
 
       {/* Centered phrase */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <p className="font-heading italic text-white/90 text-sm sm:text-base leading-none text-center px-4">
-          {t.nn_divider.phrase}
-        </p>
+        <div className="flex flex-col items-center gap-2 backdrop-blur-[2px]">
+          <div className="w-24 h-px bg-white/20" />
+          <p className="font-heading italic text-white/90 text-sm sm:text-base leading-none text-center px-4">
+            {t.nn_divider.phrase}
+          </p>
+          <div className="w-24 h-px bg-white/20" />
+        </div>
       </div>
     </div>
   );
@@ -450,8 +454,6 @@ export default function Home() {
         </div>
       </section>
 
-      <NNDivider />
-
       {/* Format */}
       <section id="format" className="section-spacing bg-secondary/50">
         <div className="container-page">
@@ -518,8 +520,10 @@ export default function Home() {
         </div>
       </section>
 
+      <NNDivider />
+
       {/* Community Gallery */}
-      <section className="section-spacing relative overflow-hidden border-t border-white/[0.07] bg-[#020617] text-surface-dark-foreground">
+      <section className="pt-10 pb-16 relative overflow-hidden border-t border-white/[0.07] bg-[#020617] text-surface-dark-foreground">
 
         <MatrixCorner pos="tl" />
         <MatrixCorner pos="tr" />
