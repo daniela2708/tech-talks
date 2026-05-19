@@ -1,150 +1,36 @@
 import { useState, useMemo } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useNow } from "@/hooks/useNow";
 import { sessions, allTags } from "@/data/sessions";
-import { Play, FileText, Github, CalendarPlus, LayoutGrid, List } from "lucide-react";
+import { Play, FileText, Github, CalendarPlus, LayoutGrid, List, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
 import { getTrustedExternalHref } from "@/lib/security";
+import {
+  getSessionCalendarHref,
+  getSessionDisplayDate,
+  getSessionStatus,
+} from "@/lib/sessions";
+import { SessionCover } from "@/components/ui/SessionCover";
 
 type StatusFilter = "all" | "upcoming" | "past";
 type ViewMode = "grid" | "list";
 
-const coverThemes: Record<
-  string,
-  {
-    halo: string;
-    badge: string;
-    chip: string;
-    line: string;
-  }
-> = {
-  GenAI: {
-    halo: "bg-primary/30",
-    badge: "border-primary/40 bg-primary/10 text-primary",
-    chip: "border-primary/30 bg-primary/10 text-primary",
-    line: "from-primary via-primary/40 to-transparent",
-  },
-  MLOps: {
-    halo: "bg-sky-400/30",
-    badge: "border-sky-300/40 bg-sky-400/10 text-sky-100",
-    chip: "border-sky-300/30 bg-sky-400/10 text-sky-100",
-    line: "from-sky-300 via-sky-300/40 to-transparent",
-  },
-  "Data Engineering": {
-    halo: "bg-emerald-400/30",
-    badge: "border-emerald-300/40 bg-emerald-400/10 text-emerald-100",
-    chip: "border-emerald-300/30 bg-emerald-400/10 text-emerald-100",
-    line: "from-emerald-300 via-emerald-300/40 to-transparent",
-  },
-  Security: {
-    halo: "bg-amber-300/30",
-    badge: "border-amber-200/40 bg-amber-300/10 text-amber-100",
-    chip: "border-amber-200/30 bg-amber-300/10 text-amber-100",
-    line: "from-amber-200 via-amber-200/40 to-transparent",
-  },
-  Visualization: {
-    halo: "bg-fuchsia-400/30",
-    badge: "border-fuchsia-300/40 bg-fuchsia-400/10 text-fuchsia-100",
-    chip: "border-fuchsia-300/30 bg-fuchsia-400/10 text-fuchsia-100",
-    line: "from-fuchsia-300 via-fuchsia-300/40 to-transparent",
-  },
-  Other: {
-    halo: "bg-white/20",
-    badge: "border-white/20 bg-white/10 text-white",
-    chip: "border-white/20 bg-white/10 text-white",
-    line: "from-white via-white/40 to-transparent",
-  },
-};
-
-function SessionCover({
-  session,
-  lang,
-  compact = false,
-}: {
-  session: (typeof sessions)[number];
-  lang: "en" | "es";
-  compact?: boolean;
-}) {
-  const theme = coverThemes[session.tags[0]] ?? coverThemes.Other;
-  const title = lang === "en" ? session.topic_en : session.topic_es;
-
-  return (
-    <div className="relative h-full w-full overflow-hidden bg-slate-950 text-white">
-      <div className="absolute inset-0 bg-[linear-gradient(140deg,#020617_0%,#0f172a_55%,#1f2937_100%)]" />
-      <div className={`absolute -right-12 top-8 h-36 w-36 rounded-full blur-3xl ${theme.halo}`} />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/8 to-transparent" />
-      <div className="absolute bottom-0 left-0 h-28 w-full bg-gradient-to-t from-black/45 to-transparent" />
-
-      <div className={`relative flex h-full flex-col justify-between ${compact ? "p-3" : "p-5"}`}>
-        <div>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
-                Wizeline
-              </p>
-              <h3 className={`mt-2 font-heading font-semibold tracking-tight ${compact ? "text-lg leading-tight" : "text-3xl leading-none"}`}>
-                AI at Work
-              </h3>
-            </div>
-            <span className={`inline-flex rounded-full border px-2.5 py-1 font-mono text-[11px] ${theme.badge}`}>
-              {session.number}
-            </span>
-          </div>
-
-          <div className={`mt-4 h-px bg-gradient-to-r ${theme.line}`} />
-
-          <h4 className={`mt-4 font-heading font-medium text-white ${compact ? "text-sm leading-snug" : "text-xl leading-snug"}`}>
-            {title}
-          </h4>
-        </div>
-
-        <div>
-          <div className="flex flex-wrap gap-2">
-            {session.tags.slice(0, compact ? 1 : 2).map((tag) => (
-              <span
-                key={tag}
-                className={`rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] ${theme.chip}`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {!compact && (
-            <>
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
-                Speakers
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-white/80">
-                {session.speakers.join(", ")}
-              </p>
-
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
-                Date
-              </p>
-              <p className="mt-2 text-sm font-medium text-white">
-                {format(new Date(session.date), "MMM d, yyyy")}
-              </p>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Sessions() {
   const { t, lang } = useLanguage();
+  const now = useNow();
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [tagFilter, setTagFilter] = useState<string | null>(null);
   const [view, setView] = useState<ViewMode>("grid");
 
   const filtered = useMemo(() => {
     return sessions.filter((s) => {
-      if (statusFilter !== "all" && s.status !== statusFilter) return false;
+      const sessionStatus = getSessionStatus(s, now);
+
+      if (statusFilter !== "all" && sessionStatus !== statusFilter) return false;
       if (tagFilter && !s.tags.includes(tagFilter)) return false;
       return true;
     });
-  }, [statusFilter, tagFilter]);
+  }, [now, statusFilter, tagFilter]);
 
   return (
     <main className="pt-16">
@@ -209,9 +95,14 @@ export default function Sessions() {
           <div className={view === "grid" ? "grid gap-6 md:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
             {filtered.map((session) => (
               (() => {
+                const sessionStatus = getSessionStatus(session, now);
                 const recordingHref = getTrustedExternalHref(session.recording_url);
                 const slidesHref = getTrustedExternalHref(session.slides_url);
                 const githubHref = getTrustedExternalHref(session.github_url);
+                const meetingHref = getTrustedExternalHref(session.meeting_url);
+                const calendarHref = getTrustedExternalHref(getSessionCalendarHref(session));
+                const hasPastActions = Boolean(recordingHref || slidesHref || githubHref);
+                const hasUpcomingActions = Boolean(meetingHref || calendarHref);
 
                 return (
                   <div
@@ -236,12 +127,12 @@ export default function Sessions() {
                         <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
                         <span
                           className={`font-mono text-xs px-2 py-0.5 rounded-sm border ${
-                            session.status === "upcoming"
+                            sessionStatus === "upcoming"
                               ? "border-primary text-primary"
                               : "border-muted-foreground/30 text-muted-foreground bg-muted"
                           }`}
                         >
-                          {session.status === "upcoming" ? t.sessions_page.upcoming : t.sessions_page.past}
+                          {sessionStatus === "upcoming" ? t.sessions_page.upcoming : t.sessions_page.past}
                         </span>
                       </div>
                       <h3 className="font-heading text-base font-medium mb-1">
@@ -251,7 +142,7 @@ export default function Sessions() {
                         {session.speakers.join(", ")}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {format(new Date(session.date), "MMM d, yyyy")}
+                        {format(getSessionDisplayDate(session), "MMM d, yyyy")}
                       </p>
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {session.tags.map((tag) => (
@@ -262,9 +153,10 @@ export default function Sessions() {
                       </div>
 
                       {/* Action buttons */}
-                      {(session.status === "past" || session.status === "upcoming") && (
+                      {((sessionStatus === "past" && hasPastActions) ||
+                        (sessionStatus === "upcoming" && hasUpcomingActions)) && (
                         <div className="flex flex-wrap gap-1.5 mt-auto pt-5">
-                          {session.status === "past" && (
+                          {sessionStatus === "past" && (
                             <>
                               {recordingHref && (
                                 <a
@@ -298,10 +190,29 @@ export default function Sessions() {
                               )}
                             </>
                           )}
-                          {session.status === "upcoming" && (
-                            <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
-                              <CalendarPlus size={12} /> {t.sessions_page.add_calendar}
-                            </button>
+                          {sessionStatus === "upcoming" && (
+                            <>
+                              {meetingHref && (
+                                <a
+                                  href={meetingHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm bg-primary text-primary-foreground hover:opacity-85 transition-opacity"
+                                >
+                                  <ExternalLink size={12} /> {t.sessions_page.join_live}
+                                </a>
+                              )}
+                              {calendarHref && (
+                                <a
+                                  href={calendarHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                                >
+                                  <CalendarPlus size={12} /> {t.sessions_page.add_calendar}
+                                </a>
+                              )}
+                            </>
                           )}
                         </div>
                       )}

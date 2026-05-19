@@ -7,8 +7,11 @@ export interface Session {
   speakers: string[];
   host?: string;
   date: string;
+  scheduled_at?: string;
   time?: string;
   location?: string;
+  meeting_url?: string;
+  duration_minutes?: number;
   tags: string[];
   status: "upcoming" | "past";
   recording_url?: string;
@@ -18,6 +21,25 @@ export interface Session {
 }
 
 export const sessions: Session[] = [
+  {
+    number: "09",
+    topic_en: "Automated Deployments in Databricks (CI/CD)",
+    topic_es: "Despliegues automatizados en Databricks (CI/CD)",
+    description_en:
+      "A practical session on automated deployments in Databricks, covering CI/CD foundations, best practices, and common questions with Felipe Cristancho joining us on-site from the Wizeline Bogota office.",
+    description_es:
+      "Un espacio práctico para conversar sobre despliegues automatizados en Databricks, buenas prácticas de CI/CD y dudas comunes, con Felipe Cristancho acompañándonos presencialmente desde la oficina de Wizeline Bogotá.",
+    speakers: ["Felipe Cristancho"],
+    date: "2026-05-20",
+    scheduled_at: "2026-05-20T17:00:00-05:00",
+    time: "5:00 PM COT",
+    location: "Hybrid - Wizeline Bogotá offices & Remote via Google Meet",
+    meeting_url: "https://meet.google.com/bvn-heyo-vef",
+    duration_minutes: 60,
+    tags: ["MLOps", "Data Engineering"],
+    status: "upcoming",
+    image: "/AI_at_Work v2.png",
+  },
   {
     number: "08",
     topic_en: "Workshop: AI Assistants in Daily Development",

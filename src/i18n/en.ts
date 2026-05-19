@@ -16,6 +16,9 @@ export const en = {
     cta_primary: "Explore Sessions",
     cta_secondary: "Become a Speaker",
   },
+  nn_divider: {
+    phrase: "Knowledge propagates forward, layer by layer.",
+  },
   about_section: {
     label: "01",
     heading: "About the Initiative",
@@ -58,6 +61,20 @@ export const en = {
         body: "The goal is to transform coworkers into a community. The best way to solve a hard technical problem is often knowing exactly who to ask.",
       },
     ],
+  },
+  community_gallery: {
+    label: "Community",
+    heading: "What AI at Work feels like",
+    body: "It is not just decks and demos. It is live questions, close conversations, and sessions that actually feel like a technical community.",
+    chips: ["Bogotá", "Hybrid talks", "Live Q&A"],
+    quote_label: "The energy",
+    quote: "The best part is that the conversation keeps going after the presentation ends.",
+    photo1_alt:
+      "Speaker presenting at AI at Work in front of attendees at the Wizeline Bogota office.",
+    photo2_alt:
+      "Audience attending an AI at Work session with the city view in the background.",
+    photo3_alt:
+      "Panel conversation during an AI at Work session with the book Algoritmos Deshumanizantes in the foreground.",
   },
   articles_teaser: {
     label: "03",
@@ -124,6 +141,7 @@ export const en = {
     watch: "Watch Recording",
     slides: "View Slides",
     code: "View Code",
+    join_live: "Join via Meet",
     add_calendar: "Add to Calendar",
   },
   about_page: {

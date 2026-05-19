@@ -117,4 +117,9 @@ html {
   .animate-fade-in-up {
     animation: fade-in-up 0.5s ease-out forwards;
   }
+
+  @keyframes bin-fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
 }

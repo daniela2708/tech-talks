@@ -17,6 +17,9 @@ export const es = {
     cta_primary: "Ver sesiones",
     cta_secondary: "Quiero presentar",
   },
+  nn_divider: {
+    phrase: "El conocimiento se propaga hacia adelante, capa a capa.",
+  },
   about_section: {
     label: "01",
     heading: "Sobre la iniciativa",
@@ -59,6 +62,20 @@ export const es = {
         body: "El objetivo es transformar compañeros de trabajo en una comunidad. La mejor forma de resolver un problema técnico difícil es a menudo saber exactamente a quién preguntar.",
       },
     ],
+  },
+  community_gallery: {
+    label: "Comunidad",
+    heading: "Así se vive AI at Work",
+    body: "No son solo slides y demos. También son preguntas en vivo, conversaciones cercanas y sesiones que se sienten como comunidad.",
+    chips: ["Bogotá", "Charlas híbridas", "Preguntas en vivo"],
+    quote_label: "La vibra",
+    quote: "La charla sigue incluso cuando la presentación ya terminó.",
+    photo1_alt:
+      "Speaker presentando en AI at Work frente a la audiencia en la oficina de Wizeline Bogotá.",
+    photo2_alt:
+      "Audiencia asistiendo a una sesión de AI at Work con vista a la ciudad de fondo.",
+    photo3_alt:
+      "Conversación de panel durante una sesión de AI at Work con el libro Algoritmos Deshumanizantes en primer plano.",
   },
   articles_teaser: {
     label: "03",
@@ -125,6 +142,7 @@ export const es = {
     watch: "Ver grabación",
     slides: "Ver diapositivas",
     code: "Ver código",
+    join_live: "Unirse por Meet",
     add_calendar: "Agregar al calendario",
   },
   about_page: {

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageToggle } from "./LanguageToggle";
 import { Menu, X, ArrowLeft } from "lucide-react";
+import { BrandLockup } from "./BrandLockup";
 
 export function Header() {
   const { t } = useLanguage();
@@ -72,10 +73,7 @@ export function Header() {
             onClick={handleHomeClick}
             className={`flex items-center gap-2 ${!isHome ? "hidden md:flex border-l border-border pl-4" : ""}`}
           >
-            <img src="/wizelinered.svg" alt="Wizeline" className="h-7 w-auto" />
-            <span className="font-heading text-sm font-medium tracking-[0.2em] text-foreground">
-              AI at Work
-            </span>
+            <BrandLockup aiClassName="h-8 w-auto" wizelineClassName="h-8 w-auto" />
           </Link>
         </div>
 

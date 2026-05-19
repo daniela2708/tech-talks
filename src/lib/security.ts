@@ -1,7 +1,9 @@
 const TRUSTED_EXTERNAL_HOSTS = new Set([
+  "calendar.google.com",
   "docs.google.com",
   "drive.google.com",
   "github.com",
+  "meet.google.com",
   "www.github.com",
 ]);
 
