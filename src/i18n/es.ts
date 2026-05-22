@@ -23,7 +23,7 @@ export const es = {
   about_section: {
     label: "01",
     heading: "Sobre la iniciativa",
-    body: "AI at Work nació dentro del Data & AI Guild y ha crecido hasta convertirse en un foro abierto para toda la organización de Wizeline. La premisa es simple: profesionales talentosos en distintos proyectos e industrias están construyendo procesos, sistemas y conocimientos de los que otros pueden aprender. Esta iniciativa crea el puente. Las sesiones cubren desde MLOps y GenAI hasta arquitectura de datos, seguridad e inteligencia visual. Todos son bienvenidos a participar, y cualquier persona con algo valioso que compartir es bienvenida a presentar.",
+    body: "AI at Work es un foro abierto para toda la organización de Wizeline, creado para impulsar la adopción correcta de la IA a través del aprendizaje compartido. La premisa es simple: personas de distintas áreas, proyectos e industrias están creando procesos, productos, automatizaciones y casos de éxito de los que todos podemos aprender. Esta iniciativa crea el puente. Queremos conocer esas experiencias, abrir conversación y hacer que el conocimiento circule entre equipos. Todos son bienvenidos a participar, y cualquier persona con algo valioso que compartir es bienvenida a presentar.",
   },
   format: {
     label: "02",
@@ -44,12 +44,12 @@ export const es = {
       {
         number: "01",
         title: "Alineación estratégica",
-        body: "Las sesiones están diseñadas en alineación directa con los objetivos de la Oficina de IA y la evolución estratégica de la práctica de Data & AI.",
+        body: "Las sesiones están diseñadas para conectar los objetivos de adopción de IA con el trabajo real que ocurre en todas las áreas de Wizeline.",
       },
       {
         number: "02",
-        title: "Actualización tecnológica",
-        body: "Desde GenAI hasta arquitecturas Lakehouse y seguridad de LLM, el programa mantiene a los equipos actualizados en todas las disciplinas.",
+        title: "Aprendizaje entre áreas",
+        body: "Desde GenAI y automatización hasta procesos internos, delivery, producto, seguridad y casos de éxito con clientes, el programa ayuda a que los equipos aprendan unos de otros.",
       },
       {
         number: "03",
@@ -90,7 +90,7 @@ export const es = {
       },
       {
         title: "Temas a los que sí queremos volver",
-        body: "GenAI, MLOps, data engineering, seguridad, visualización y ese tipo de aprendizajes que suelen abrir nuevas conversaciones entre equipos.",
+        body: "Adopción de IA, casos de éxito, procesos, delivery, producto, automatización, seguridad, datos y aprendizajes que suelen abrir nuevas conversaciones entre equipos.",
       },
       {
         title: "Conocimiento que sigue circulando",
@@ -99,7 +99,7 @@ export const es = {
     ],
     callout_label: "Lo que viene",
     callout_body:
-      "La primera tanda ya está en camino. Muy pronto empezaremos a publicar artículos pensados para abrir conversación, compartir criterio y fortalecer a la comunidad técnica en un formato más durable.",
+      "La primera tanda ya está en camino. Muy pronto empezaremos a publicar artículos pensados para abrir conversación, compartir criterio y fortalecer una comunidad de aprendizaje alrededor de la IA en un formato más durable.",
     callout_badge: "Primera entrega muy pronto",
   },
   upcoming: {
@@ -127,9 +127,9 @@ export const es = {
     disclaimer: "Esta es una lista de correo interna de Wizeline.",
   },
   footer: {
-    tagline: "Una iniciativa del Data & AI Guild",
-    contact: "Preguntas? Encuéntranos en Slack en #tech-ai-events",
-    host: "Santi Merchán",
+    tagline: "Un espacio abierto de knowledge sharing sobre IA",
+    contact: "Preguntas? Encuéntranos en Slack en #ai-at-work",
+    host: "#ai-at-work",
     copyright: "Wizeline. Todos los derechos reservados.",
   },
   sessions_page: {
@@ -149,13 +149,13 @@ export const es = {
     title: "Acerca de",
     origin_heading: "Cómo empezó",
     origin_body:
-      "AI at Work surgió de una observación simple dentro del Data & AI Guild en Wizeline: se estaba creando conocimiento excepcional en distintos equipos y proyectos, pero carecía de un canal estructurado para una difusión más amplia. La iniciativa fue diseñada para llenar ese vacío creando un foro abierto y recurrente donde los profesionales pudieran presentar trabajo real, compartir lecciones aprendidas e intercambiar perspectivas técnicas. Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
+      "AI at Work surgió de una observación simple: se estaba creando conocimiento excepcional en distintos equipos, áreas y proyectos de Wizeline, pero hacía falta un canal recurrente para compartirlo de forma más amplia. La iniciativa fue diseñada para llenar ese vacío creando un foro abierto donde las personas puedan presentar trabajo real, mostrar casos de éxito, compartir lecciones aprendidas e intercambiar perspectivas sobre cómo adoptar IA de manera correcta. Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
     mission_heading: "Pilares de la misión",
-    organizer_label: "Organizador",
-    organizer_heading: "Organizador",
-    organizer_name: "Santi Merchán",
-    organizer_role: "Host y organizador",
-    organizer_slack: "Slack: #tech-ai-events",
+    organizer_label: "Contacto",
+    organizer_heading: "Canal de Slack",
+    organizer_name: "#ai-at-work",
+    organizer_role: "Punto de contacto para sesiones, ideas y feedback",
+    organizer_slack: "wizeline.slack.com/archives/C07MSCUDR8R",
     cta_submit_title: "Proponer un tema",
     cta_submit_body:
       "Tienes una idea para una sesión? Comparte tu propuesta y el equipo te ayudará a darle forma.",

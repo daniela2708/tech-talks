@@ -13,7 +13,6 @@ import {
   MessageSquare,
   Code,
   BarChart3,
-  User,
   Send,
   MessageCircle,
   Layout,
@@ -657,24 +656,32 @@ export default function Home() {
         </section>
       )}
 
-      {/* Organizer & Get Involved */}
+      {/* Contact & Get Involved */}
       <section id="get-involved" className="section-spacing">
         <div className="container-page">
           <div className="grid gap-6 md:grid-cols-3">
-            {/* Organizer */}
-            <div className="border border-border rounded-sm p-6">
+            {/* Contact */}
+            <a
+              href="https://wizeline.slack.com/archives/C07MSCUDR8R"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border rounded-sm p-6 hover:opacity-80 transition-opacity"
+            >
               <span className="font-mono text-primary text-xs tracking-widest uppercase">{t.about_page.organizer_label}</span>
               <div className="flex items-center gap-4 mt-4">
                 <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-                  <User size={20} className="text-muted-foreground" />
+                  <MessageCircle size={20} className="text-muted-foreground" />
                 </div>
                 <div>
-                  <p className="font-heading font-medium">{t.about_page.organizer_name}</p>
+                  <p className="font-heading font-medium inline-flex items-center gap-1.5">
+                    {t.about_page.organizer_name}
+                    <ExternalLink size={13} className="text-muted-foreground" />
+                  </p>
                   <p className="text-sm text-muted-foreground">{t.about_page.organizer_role}</p>
                   <p className="text-xs font-mono text-muted-foreground mt-1">{t.about_page.organizer_slack}</p>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* CTA Cards */}
             <a

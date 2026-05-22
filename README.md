@@ -2,7 +2,7 @@
 
 ## Project info
 
-A knowledge-sharing initiative by Wizeline's Data & AI Guild.
+A knowledge-sharing initiative for the whole Wizeline organization, focused on the right adoption of AI through cross-area learning, real use cases, and success stories.
 
 ## How can I edit this code?
 

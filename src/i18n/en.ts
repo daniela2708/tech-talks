@@ -22,7 +22,7 @@ export const en = {
   about_section: {
     label: "01",
     heading: "About the Initiative",
-    body: "AI at Work was born inside the Data & AI Guild and has grown into an open forum for the entire Wizeline organization. The premise is simple: talented professionals across projects and industries are building processes, systems, and insights that others can learn from. This initiative creates the bridge. Sessions cover everything from MLOps and GenAI to data architecture, security, and visual intelligence. Everyone is welcome to attend, and anyone with something worth sharing is welcome to present.",
+    body: "AI at Work is an open forum for the entire Wizeline organization, created to support the right adoption of AI through shared learning. The premise is simple: people across areas, projects, and industries are building processes, products, automations, and success stories that everyone can learn from. This initiative creates the bridge. We want to hear those experiences, open the conversation, and help knowledge move across teams. Everyone is welcome to attend, and anyone with something worth sharing is welcome to present.",
   },
   format: {
     label: "02",
@@ -43,12 +43,12 @@ export const en = {
       {
         number: "01",
         title: "Strategic Alignment",
-        body: "Sessions are designed in direct alignment with the AI Office objectives and the strategic evolution of the Data & AI practice.",
+        body: "Sessions are designed to connect AI adoption goals with the real work happening across every area of Wizeline.",
       },
       {
         number: "02",
-        title: "Technology Currency",
-        body: "From GenAI to Lakehouse architectures and LLM security, the program keeps teams current across disciplines.",
+        title: "Cross-Area Learning",
+        body: "From GenAI and automation to internal processes, delivery, product, security, and client success stories, the program helps teams learn from one another.",
       },
       {
         number: "03",
@@ -65,7 +65,7 @@ export const en = {
   community_gallery: {
     label: "Community",
     heading: "What AI at Work feels like",
-    body: "It is not just decks and demos. It is live questions, close conversations, and sessions that actually feel like a technical community.",
+    body: "It is not just decks and demos. It is live questions, close conversations, and sessions that actually feel like a learning community.",
     chips: ["Bogotá", "Hybrid talks", "Live Q&A"],
     quote_label: "The energy",
     quote: "The best part is that the conversation keeps going after the presentation ends.",
@@ -89,7 +89,7 @@ export const en = {
       },
       {
         title: "Topics people actually want to revisit",
-        body: "GenAI, MLOps, data engineering, security, visualization, and the kind of lessons that spark follow-up conversations across teams.",
+        body: "AI adoption, success stories, processes, delivery, product, automation, security, data, and the lessons that spark follow-up conversations across teams.",
       },
       {
         title: "Knowledge that stays in motion",
@@ -98,7 +98,7 @@ export const en = {
     ],
     callout_label: "What to expect",
     callout_body:
-      "The first wave is already in motion. We will soon start publishing thoughtful articles designed to open conversation, share criteria, and strengthen the broader technical community.",
+      "The first wave is already in motion. We will soon start publishing thoughtful articles designed to open conversation, share criteria, and strengthen a broader AI learning community.",
     callout_badge: "First drop coming soon",
   },
   upcoming: {
@@ -126,9 +126,9 @@ export const en = {
     disclaimer: "This is an internal Wizeline mailing list.",
   },
   footer: {
-    tagline: "An initiative by the Data & AI Guild",
-    contact: "Questions? Find us on Slack at #tech-ai-events",
-    host: "Santi Merchán",
+    tagline: "An open knowledge-sharing space for AI",
+    contact: "Questions? Find us on Slack at #ai-at-work",
+    host: "#ai-at-work",
     copyright: "Wizeline. All rights reserved.",
   },
   sessions_page: {
@@ -148,13 +148,13 @@ export const en = {
     title: "About",
     origin_heading: "How It Started",
     origin_body:
-      "AI at Work emerged from a simple observation within the Data & AI Guild at Wizeline: exceptional knowledge was being created across teams and projects, but it lacked a structured channel for broader dissemination. The initiative was designed to fill that gap by creating a recurring, open forum where practitioners could present real work, share lessons learned, and exchange technical perspectives. What began as a small experiment has become a growing platform that connects people, ideas, and expertise across the organization.",
+      "AI at Work emerged from a simple observation: exceptional knowledge was being created across Wizeline teams, areas, and projects, but it needed a recurring channel for broader sharing. The initiative was designed to fill that gap by creating an open forum where people can present real work, showcase success stories, share lessons learned, and exchange perspectives on how to adopt AI in the right way. What began as a small experiment has become a growing platform that connects people, ideas, and expertise across the organization.",
     mission_heading: "Mission Pillars",
-    organizer_label: "Organizer",
-    organizer_heading: "Organizer",
-    organizer_name: "Santi Merchán",
-    organizer_role: "Host & Organizer",
-    organizer_slack: "Slack: #tech-ai-events",
+    organizer_label: "Contact",
+    organizer_heading: "Slack Channel",
+    organizer_name: "#ai-at-work",
+    organizer_role: "Contact point for sessions, ideas, and feedback",
+    organizer_slack: "wizeline.slack.com/archives/C07MSCUDR8R",
     cta_submit_title: "Submit a Topic",
     cta_submit_body:
       "Have an idea for a session? Share your proposal and the team will help you shape it.",
