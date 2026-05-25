@@ -36,7 +36,7 @@ export default function Sessions() {
     <main className="pt-16">
       <section className="section-spacing">
         <div className="container-page">
-          <h1 className="font-heading text-4xl font-bold mb-8">{t.sessions_page.title}</h1>
+          <h1 className="font-heading text-4xl font-bold leading-tight mb-8">{t.sessions_page.title}</h1>
 
           {/* Controls */}
           <div className="flex flex-wrap items-center gap-4 mb-8 sticky top-16 bg-background py-4 z-10 border-b border-border -mx-6 px-6 md:-mx-8 md:px-8">
@@ -124,9 +124,9 @@ export default function Sessions() {
                     )}
                     <div className={`p-6 ${view === "list" ? "flex-1" : "flex flex-col flex-1"}`}>
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
+                        <span className="font-body text-primary text-sm font-semibold">{session.number}</span>
                         <span
-                          className={`font-mono text-xs px-2 py-0.5 rounded-sm border ${
+                          className={`font-body text-xs px-2 py-0.5 rounded-sm border ${
                             sessionStatus === "upcoming"
                               ? "border-primary text-primary"
                               : "border-muted-foreground/30 text-muted-foreground bg-muted"
@@ -135,7 +135,7 @@ export default function Sessions() {
                           {sessionStatus === "upcoming" ? t.sessions_page.upcoming : t.sessions_page.past}
                         </span>
                       </div>
-                      <h3 className="font-heading text-base font-medium mb-1">
+                      <h3 className="font-body text-base font-semibold mb-1">
                         {lang === "en" ? session.topic_en : session.topic_es}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-2">
@@ -146,7 +146,7 @@ export default function Sessions() {
                       </p>
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {session.tags.map((tag) => (
-                          <span key={tag} className="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
+                          <span key={tag} className="text-xs font-body text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
                             {tag}
                           </span>
                         ))}

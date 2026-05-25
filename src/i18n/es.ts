@@ -148,8 +148,12 @@ export const es = {
   about_page: {
     title: "Acerca de",
     origin_heading: "Cómo empezó",
-    origin_body:
-      "AI at Work surgió de una observación simple: se estaba creando conocimiento excepcional en distintos equipos, áreas y proyectos de Wizeline, pero hacía falta un canal recurrente para compartirlo de forma más amplia. La iniciativa fue diseñada para llenar ese vacío creando un foro abierto donde las personas puedan presentar trabajo real, mostrar casos de éxito, compartir lecciones aprendidas e intercambiar perspectivas sobre cómo adoptar IA de manera correcta. Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
+    origin_body_before:
+      "AI at Work surgió de una observación simple: se estaba creando conocimiento excepcional en distintos equipos, áreas y proyectos de Wizeline, pero hacía falta un canal recurrente para compartirlo de forma más amplia. La iniciativa fue diseñada para llenar ese vacío creando ",
+    origin_body_highlight:
+      "un foro abierto donde las personas puedan presentar trabajo real, mostrar casos de éxito, compartir lecciones aprendidas e intercambiar perspectivas sobre cómo adoptar IA de manera correcta",
+    origin_body_after:
+      ". Lo que comenzó como un pequeño experimento se ha convertido en una plataforma creciente que conecta personas, ideas y experiencia en toda la organización.",
     mission_heading: "Pilares de la misión",
     organizer_label: "Contacto",
     organizer_heading: "Canal de Slack",

@@ -20,9 +20,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Space Grotesk"', "system-ui", "sans-serif"],
-        body: ['"Inter"', "system-ui", "sans-serif"],
-        mono: ['"IBM Plex Mono"', "monospace"],
+        heading: ['"Space Mono"', '"Nunito Sans"', "system-ui", "sans-serif"],
+        body: ['"Nunito Sans"', "system-ui", "sans-serif"],
+        mono: ['"Space Mono"', "ui-monospace", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

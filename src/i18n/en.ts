@@ -147,8 +147,12 @@ export const en = {
   about_page: {
     title: "About",
     origin_heading: "How It Started",
-    origin_body:
-      "AI at Work emerged from a simple observation: exceptional knowledge was being created across Wizeline teams, areas, and projects, but it needed a recurring channel for broader sharing. The initiative was designed to fill that gap by creating an open forum where people can present real work, showcase success stories, share lessons learned, and exchange perspectives on how to adopt AI in the right way. What began as a small experiment has become a growing platform that connects people, ideas, and expertise across the organization.",
+    origin_body_before:
+      "AI at Work emerged from a simple observation: exceptional knowledge was being created across Wizeline teams, areas, and projects, but it needed a recurring channel for broader sharing. The initiative was designed to fill that gap by creating ",
+    origin_body_highlight:
+      "an open forum where people can present real work, showcase success stories, share lessons learned, and exchange perspectives on how to adopt AI in the right way",
+    origin_body_after:
+      ". What began as a small experiment has become a growing platform that connects people, ideas, and expertise across the organization.",
     mission_heading: "Mission Pillars",
     organizer_label: "Contact",
     organizer_heading: "Slack Channel",

@@ -40,7 +40,7 @@ function HeroTicker({ now }: { now: Date }) {
     <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-black/60 backdrop-blur-sm border-t border-white/10 py-3">
       <div className="ticker-scroll flex whitespace-nowrap">
         {items.map((s, i) => (
-          <span key={i} className="mx-8 font-mono text-xs text-white/50">
+          <span key={i} className="mx-8 font-body text-xs text-white/50">
             <span className="text-primary mr-2">[{s.number}]</span>
             {s.speakers.join(", ")}
             <span className="text-white/30 mx-2">|</span>
@@ -77,18 +77,18 @@ function UpcomingSessionCard({ session, now }: { session: Session; now: Date }) 
 
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-center gap-3 mb-3">
-          <span className="font-mono text-primary text-sm font-medium">{session.number}</span>
-          <span className="font-mono text-xs px-2 py-0.5 rounded-sm border border-primary text-primary">
+          <span className="font-body text-primary text-sm font-semibold">{session.number}</span>
+          <span className="font-body text-xs px-2 py-0.5 rounded-sm border border-primary text-primary">
             {t.sessions_page.upcoming}
           </span>
           {isSoon && (
-            <span className="font-mono text-[10px] text-primary border border-primary/40 bg-primary/8 px-1.5 py-0.5 rounded-sm animate-pulse ml-auto">
+            <span className="font-body text-[10px] font-bold text-primary border border-primary/40 bg-primary/8 px-1.5 py-0.5 rounded-sm animate-pulse ml-auto">
               {t.upcoming.happening_soon}
             </span>
           )}
         </div>
 
-        <h3 className="font-heading text-base font-medium mb-1">
+        <h3 className="font-body text-base font-semibold mb-1">
           {lang === "en" ? session.topic_en : session.topic_es}
         </h3>
         <p className="text-sm text-muted-foreground mb-2">{session.speakers.join(", ")}</p>
@@ -100,7 +100,7 @@ function UpcomingSessionCard({ session, now }: { session: Session; now: Date }) 
 
         <div className="flex flex-wrap gap-1.5 mt-3">
           {session.tags.map((tag) => (
-            <span key={tag} className="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
+            <span key={tag} className="text-xs font-body text-muted-foreground border border-border px-2 py-0.5 rounded-sm">
               {tag}
             </span>
           ))}
@@ -144,10 +144,10 @@ function VideoPreviewCard({ session }: { session: Session }) {
     <div className="border border-border rounded-sm overflow-hidden group hover:border-primary/40 transition-colors duration-300">
       <div className="relative aspect-video bg-surface-dark flex items-center justify-center cursor-pointer overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50 flex flex-col items-center justify-center transition-all duration-300 group-hover:from-black/80 group-hover:via-black/60 group-hover:to-black/40">
-          <span className="font-mono text-primary text-xs mb-3 border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
+          <span className="font-body text-primary text-xs font-bold mb-3 border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
             {session.number}
           </span>
-          <h4 className="font-heading text-sm md:text-base font-medium text-white text-center px-4 max-w-md leading-snug">
+          <h4 className="font-body text-sm md:text-base font-semibold text-white text-center px-4 max-w-md leading-snug">
             {lang === "en" ? session.topic_en : session.topic_es}
           </h4>
           <p className="text-xs text-white/50 mt-2">{session.speakers.join(", ")}</p>
@@ -166,7 +166,7 @@ function VideoPreviewCard({ session }: { session: Session }) {
         )}
       </div>
       <div className="p-4 flex items-center justify-between bg-card">
-        <p className="text-xs text-muted-foreground font-mono">
+        <p className="text-xs text-muted-foreground font-body">
           {format(getSessionDisplayDate(session), "MMM d, yyyy")}
         </p>
         <div className="flex gap-3">
@@ -300,7 +300,7 @@ function NNDivider() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 backdrop-blur-[2px]">
           <div className="w-24 h-px bg-white/20" />
-          <p className="font-heading italic text-white/90 text-sm sm:text-base leading-none text-center px-4">
+          <p className="font-body italic font-semibold text-white/90 text-sm sm:text-base leading-none text-center px-4">
             {t.nn_divider.phrase}
           </p>
           <div className="w-24 h-px bg-white/20" />
@@ -406,7 +406,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-surface-dark/75" />
         <div className="relative z-10 max-w-3xl">
-          <h1 className="font-heading text-3xl sm:text-4xl font-bold leading-tight tracking-tight md:text-6xl text-surface-dark-foreground">
+          <h1 className="font-body text-3xl sm:text-4xl font-black leading-tight md:text-6xl text-surface-dark-foreground">
             {t.hero.headline}
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-surface-dark-foreground/70 max-w-2xl mx-auto">
@@ -442,12 +442,16 @@ export default function Home() {
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
                   <Users size={20} className="text-primary" />
                 </div>
-                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.about_section.label}</span>
+                <span className="font-body text-primary text-sm uppercase font-bold">{t.about_section.label}</span>
               </div>
-              <h2 className="font-heading text-3xl font-medium">{t.about_section.heading}</h2>
+              <h2 className="font-heading text-3xl font-bold leading-tight">{t.about_section.heading}</h2>
             </div>
             <div className="md:col-span-7 md:col-start-5 md:border-l md:border-border md:pl-8">
-              <p className="text-muted-foreground leading-relaxed text-base">{t.about_page.origin_body}</p>
+              <p className="text-muted-foreground leading-relaxed text-base">
+                {t.about_page.origin_body_before}
+                <strong className="font-bold text-foreground">{t.about_page.origin_body_highlight}</strong>
+                {t.about_page.origin_body_after}
+              </p>
             </div>
           </div>
         </div>
@@ -461,9 +465,9 @@ export default function Home() {
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
                 <Layout size={20} className="text-primary" />
               </div>
-              <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.format.label}</span>
+              <span className="font-body text-primary text-sm uppercase font-bold">{t.format.label}</span>
             </div>
-            <h2 className="font-heading text-3xl font-medium">{t.format.heading}</h2>
+            <h2 className="font-heading text-3xl font-bold leading-tight">{t.format.heading}</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -476,7 +480,7 @@ export default function Home() {
                 className="group relative border border-border bg-background p-6 rounded-sm overflow-hidden hover:border-primary/40 transition-colors duration-300"
               >
                 {/* Ghost number */}
-                <span className="absolute top-3 right-4 font-mono text-6xl font-bold text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
+                <span className="absolute top-3 right-4 font-body text-6xl font-black text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
                   {card.num}
                 </span>
                 <div className="relative z-10">
@@ -484,7 +488,7 @@ export default function Home() {
                     <div className="inline-flex items-center justify-center w-9 h-9 rounded-sm bg-primary/8 border border-primary/15">
                       <card.icon size={18} className="text-primary" />
                     </div>
-                    <h3 className="font-heading text-base font-bold">{card.title}</h3>
+                    <h3 className="font-body text-base font-bold">{card.title}</h3>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
                 </div>
@@ -497,7 +501,7 @@ export default function Home() {
       {/* Why Participate */}
       <section className="bg-surface-dark text-surface-dark-foreground section-spacing">
         <div className="container-page">
-          <h2 className="font-heading text-3xl font-medium mb-14">{t.why.heading}</h2>
+          <h2 className="font-heading text-3xl font-bold leading-tight mb-14">{t.why.heading}</h2>
           <div className="grid gap-10 md:grid-cols-2">
             {t.why.items.map((item, idx) => {
               const icons = [Lightbulb, Code, BarChart3, MessageSquare];
@@ -508,8 +512,8 @@ export default function Home() {
                     <div className="w-6 h-6 rounded-sm bg-primary/15 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors duration-200">
                       <Icon size={12} className="text-primary" />
                     </div>
-                    <span className="font-mono text-primary text-xs tracking-widest font-bold">{item.number}</span>
-                    <h3 className="font-heading text-lg font-medium">{item.title}</h3>
+                    <span className="font-body text-primary text-xs font-bold">{item.number}</span>
+                    <h3 className="font-body text-lg font-semibold">{item.title}</h3>
                   </div>
                   <p className="text-sm text-white/50 leading-relaxed">{item.body}</p>
                 </div>
@@ -536,14 +540,14 @@ export default function Home() {
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-primary/30 bg-primary/10">
               <Images size={20} className="text-primary" />
             </div>
-            <span className="font-mono text-sm font-bold uppercase tracking-widest text-primary">
+            <span className="font-body text-sm font-bold uppercase text-primary">
               {t.community_gallery.label}
             </span>
           </div>
 
           {/* Heading */}
           <div className="mb-8">
-            <h2 className="font-heading text-3xl font-medium leading-tight text-white sm:text-4xl">
+            <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
               {t.community_gallery.heading}
             </h2>
             <p className="mt-3 text-base leading-relaxed text-white/60 max-w-lg">
@@ -560,7 +564,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
                   {t.community_gallery.chips.map((chip) => (
-                    <span key={chip} className="inline-flex items-center rounded-full border border-white/15 bg-black/40 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.18em] text-white/75 backdrop-blur-sm">
+                    <span key={chip} className="inline-flex items-center rounded-full border border-white/15 bg-black/40 px-2.5 py-0.5 text-[10px] font-body font-bold uppercase text-white/75 backdrop-blur-sm">
                       {chip}
                     </span>
                   ))}
@@ -589,10 +593,10 @@ export default function Home() {
 
           {/* Quote */}
           <blockquote className="mt-6 border-l-2 border-primary/50 pl-6 py-2">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-primary mb-2">
+            <p className="font-body text-[10px] font-bold uppercase text-primary mb-2">
               {t.community_gallery.quote_label}
             </p>
-            <p className="font-heading text-base leading-snug text-white/80">
+            <p className="font-body text-base font-semibold leading-snug text-white/80">
               "{t.community_gallery.quote}"
             </p>
           </blockquote>
@@ -604,8 +608,8 @@ export default function Home() {
         <div className="container-page">
           <div className="flex items-end justify-between mb-12">
             <div className="flex items-baseline gap-3">
-              <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.upcoming.label}</span>
-              <h2 className="font-heading text-3xl font-medium">{t.upcoming.heading}</h2>
+              <span className="font-body text-primary text-sm uppercase font-bold">{t.upcoming.label}</span>
+              <h2 className="font-heading text-3xl font-bold leading-tight">{t.upcoming.heading}</h2>
             </div>
             <Link
               to="/sessions"
@@ -622,7 +626,7 @@ export default function Home() {
             </div>
           ) : (
             <div className="border border-dashed border-border rounded-sm p-12 text-center">
-              <p className="text-muted-foreground font-mono text-sm">{t.upcoming.empty}</p>
+              <p className="text-muted-foreground font-body text-sm">{t.upcoming.empty}</p>
               <Link to="/sessions" className="inline-flex items-center gap-1.5 text-sm text-primary mt-4 hover:opacity-80">
                 {t.upcoming.view_all} <ArrowRight size={14} />
               </Link>
@@ -637,8 +641,8 @@ export default function Home() {
           <div className="container-page">
             <div className="flex items-end justify-between mb-12">
               <div>
-                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.featured.library_label}</span>
-                <h2 className="font-heading text-3xl font-medium mt-2">{t.featured.label}</h2>
+                <span className="font-body text-primary text-sm uppercase font-bold">{t.featured.library_label}</span>
+                <h2 className="font-heading text-3xl font-bold leading-tight mt-2">{t.featured.label}</h2>
               </div>
               <Link
                 to="/sessions"
@@ -667,18 +671,18 @@ export default function Home() {
               rel="noopener noreferrer"
               className="border border-border rounded-sm p-6 hover:opacity-80 transition-opacity"
             >
-              <span className="font-mono text-primary text-xs tracking-widest uppercase">{t.about_page.organizer_label}</span>
+              <span className="font-body text-primary text-xs font-bold uppercase">{t.about_page.organizer_label}</span>
               <div className="flex items-center gap-4 mt-4">
                 <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
                   <MessageCircle size={20} className="text-muted-foreground" />
                 </div>
                 <div>
-                  <p className="font-heading font-medium inline-flex items-center gap-1.5">
+                  <p className="font-body font-semibold inline-flex items-center gap-1.5">
                     {t.about_page.organizer_name}
                     <ExternalLink size={13} className="text-muted-foreground" />
                   </p>
                   <p className="text-sm text-muted-foreground">{t.about_page.organizer_role}</p>
-                  <p className="text-xs font-mono text-muted-foreground mt-1">{t.about_page.organizer_slack}</p>
+                  <p className="text-xs font-body text-muted-foreground mt-1">{t.about_page.organizer_slack}</p>
                 </div>
               </div>
             </a>
@@ -692,7 +696,7 @@ export default function Home() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <Send size={18} className="text-primary" />
-                <h3 className="font-heading text-lg font-medium">{t.about_page.cta_submit_title}</h3>
+                <h3 className="font-body text-lg font-semibold">{t.about_page.cta_submit_title}</h3>
               </div>
               <p className="text-sm text-muted-foreground">{t.about_page.cta_submit_body}</p>
             </a>
@@ -704,7 +708,7 @@ export default function Home() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <MessageCircle size={18} className="text-muted-foreground" />
-                <h3 className="font-heading text-lg font-medium">{t.about_page.cta_feedback_title}</h3>
+                <h3 className="font-body text-lg font-semibold">{t.about_page.cta_feedback_title}</h3>
               </div>
               <p className="text-sm text-muted-foreground">{t.about_page.cta_feedback_body}</p>
             </a>
@@ -721,12 +725,12 @@ export default function Home() {
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20">
                   <FileText size={20} className="text-primary" />
                 </div>
-                <span className="font-mono text-primary text-sm tracking-widest uppercase font-bold">{t.articles_teaser.label}</span>
+                <span className="font-body text-primary text-sm uppercase font-bold">{t.articles_teaser.label}</span>
               </div>
-              <span className="inline-flex items-center rounded-sm border border-primary/30 bg-primary/8 px-3 py-1 font-mono text-xs uppercase tracking-widest text-primary">
+              <span className="inline-flex items-center rounded-sm border border-primary/30 bg-primary/8 px-3 py-1 font-body text-xs font-bold uppercase text-primary">
                 {t.articles_teaser.status}
               </span>
-              <h2 className="font-heading text-3xl font-medium mt-5 leading-tight">
+              <h2 className="font-heading text-3xl font-bold mt-5 leading-tight">
                 {t.articles_teaser.heading}
               </h2>
               <p className="text-muted-foreground leading-relaxed text-base mt-4">
@@ -743,14 +747,14 @@ export default function Home() {
                     key={item.title}
                     className="group relative rounded-sm border border-border bg-background p-6 overflow-hidden hover:border-primary/35 transition-colors duration-300"
                   >
-                    <span className="absolute right-4 top-3 font-mono text-5xl font-bold text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
+                    <span className="absolute right-4 top-3 font-body text-5xl font-black text-border/60 select-none group-hover:text-primary/10 transition-colors duration-300">
                       {`0${idx + 1}`}
                     </span>
                     <div className="relative z-10">
                       <div className="inline-flex items-center justify-center w-9 h-9 rounded-sm bg-primary/8 border border-primary/15 mb-4">
                         <Icon size={18} className="text-primary" />
                       </div>
-                      <h3 className="font-heading text-base font-bold mb-3">{item.title}</h3>
+                      <h3 className="font-body text-base font-bold mb-3">{item.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
                     </div>
                   </div>
@@ -762,14 +766,14 @@ export default function Home() {
           <div className="mt-8 rounded-sm border border-primary/20 bg-primary/6 p-6 md:p-7">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="max-w-3xl">
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-primary mb-2">
+                <p className="font-body text-xs font-bold uppercase text-primary mb-2">
                   {t.articles_teaser.callout_label}
                 </p>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   {t.articles_teaser.callout_body}
                 </p>
               </div>
-              <span className="inline-flex w-fit items-center rounded-sm border border-primary/30 px-3 py-2 font-mono text-xs uppercase tracking-widest text-primary">
+              <span className="inline-flex w-fit items-center rounded-sm border border-primary/30 px-3 py-2 font-body text-xs font-bold uppercase text-primary">
                 {t.articles_teaser.callout_badge}
               </span>
             </div>

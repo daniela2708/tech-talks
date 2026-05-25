@@ -69,14 +69,14 @@ export function SessionCover({
               wizelineClassName={compact ? "h-6 w-auto" : "h-8 w-auto"}
               aiClassName={compact ? "h-6 w-auto" : "h-8 w-auto"}
             />
-            <span className={`inline-flex rounded-full border px-2.5 py-1 font-mono text-[11px] ${theme.badge}`}>
+            <span className={`inline-flex rounded-full border px-2.5 py-1 font-body text-[11px] font-bold ${theme.badge}`}>
               {session.number}
             </span>
           </div>
 
           <div className={`mt-4 h-px bg-gradient-to-r ${theme.line}`} />
 
-          <h4 className={`mt-4 font-heading font-medium text-white ${compact ? "text-sm leading-snug" : "text-xl leading-snug"}`}>
+          <h4 className={`mt-4 font-body font-semibold text-white ${compact ? "text-sm leading-snug" : "text-xl leading-snug"}`}>
             {title}
           </h4>
         </div>
@@ -86,7 +86,7 @@ export function SessionCover({
             {session.tags.slice(0, compact ? 1 : 2).map((tag) => (
               <span
                 key={tag}
-                className={`rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] ${theme.chip}`}
+                className={`rounded-full border px-2.5 py-1 font-body text-[10px] font-bold uppercase ${theme.chip}`}
               >
                 {tag}
               </span>
@@ -95,14 +95,14 @@ export function SessionCover({
 
           {!compact && (
             <>
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
+              <p className="mt-5 font-body text-[10px] font-bold uppercase text-white/45">
                 Speakers
               </p>
               <p className="mt-2 text-sm leading-relaxed text-white/80">
                 {session.speakers.join(", ")}
               </p>
 
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
+              <p className="mt-5 font-body text-[10px] font-bold uppercase text-white/45">
                 Date
               </p>
               <p className="mt-2 text-sm font-medium text-white">
