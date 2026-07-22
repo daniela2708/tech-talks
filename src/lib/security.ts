@@ -1,3 +1,5 @@
+import { ASSET_BASE_URL } from "@/lib/assets";
+
 const TRUSTED_EXTERNAL_HOSTS = new Set([
   "calendar.google.com",
   "docs.google.com",
@@ -31,6 +33,31 @@ export function getTrustedExternalHref(url: string | undefined) {
     }
 
     return parsed.toString();
+  } catch {
+    return null;
+  }
+}
+
+export function getTrustedDownloadHref(url: string | undefined) {
+  if (!url) {
+    return null;
+  }
+
+  const isLocalPath = /^\/[^/\\]/.test(url) && !url.includes("\\");
+
+  if (isLocalPath) {
+    return url;
+  }
+
+  try {
+    const assetBase = new URL(ASSET_BASE_URL);
+    const parsed = new URL(url);
+    const isR2Asset =
+      parsed.protocol === "https:" &&
+      parsed.origin === assetBase.origin &&
+      parsed.pathname.startsWith("/recursos/");
+
+    return isR2Asset ? parsed.toString() : null;
   } catch {
     return null;
   }

@@ -24,6 +24,14 @@ npm i
 npm run dev
 ```
 
+Before submitting changes, run the complete validation suite:
+
+```sh
+npm run check
+```
+
+This runs TypeScript strict checks, ESLint, unit tests, and the production build.
+
 ## What technologies are used for this project?
 
 This project is built with:
@@ -33,3 +41,24 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+
+## Cloudflare Pages
+
+The site is configured for Cloudflare Pages as the `wizeline-ai-talks` project.
+
+```sh
+# Verify the Cloudflare account currently connected to Wrangler
+npx wrangler whoami
+
+# Build and preview locally using the Pages runtime
+npm run cf:preview
+
+# Build and deploy to Cloudflare Pages
+npm run cf:deploy
+```
+
+The production build output is `dist`. Images and downloadable resources are
+stored in the `wizeline-ai-talks-assets` R2 bucket rather than in `public`. The
+app uses its public `r2.dev` URL by default; set `VITE_ASSET_BASE_URL` to switch
+to a custom domain without changing source code. Session recordings currently
+remain external Google Drive/Google Videos links.

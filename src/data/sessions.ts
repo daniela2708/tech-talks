@@ -1,3 +1,5 @@
+import { assetUrl } from "@/lib/assets";
+
 export interface Session {
   number: string;
   topic_en: string;
@@ -17,10 +19,84 @@ export interface Session {
   recording_url?: string;
   slides_url?: string;
   github_url?: string;
+  download_url?: string;
   image?: string;
 }
 
 export const sessions: Session[] = [
+  {
+    number: "13",
+    topic_en: "People in the Center: Automation for Your Everyday Work",
+    topic_es: "Las personas en el centro: automatización para tu trabajo diario",
+    description_en:
+      "English edition of our July 16 session. What if you could delegate your day-to-day administrative tasks to focus on what matters: people? This hands-on talk breaks the myth that automating processes requires programming expertise. Through a case study, we show how combining Google Gemini with Apps Script lets you design tailored solutions inside the tools you already use — Sheets, Docs, and Drive.",
+    description_es:
+      "Edición en inglés de nuestra sesión del 16 de julio. ¿Y si pudieras delegar tus tareas administrativas del día a día para enfocarte en lo que importa: las personas? Esta charla práctica rompe el mito de que automatizar procesos requiere saber programar. A través de un caso de estudio, mostramos cómo combinar Google Gemini con Apps Script para diseñar soluciones a la medida dentro de las herramientas que ya usas: Sheets, Docs y Drive.",
+    speakers: ["Ángela Barrera"],
+    date: "2026-07-24",
+    scheduled_at: "2026-07-24T10:00:00-05:00",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    meeting_url: "https://meet.google.com/tjb-gohi-bic",
+    duration_minutes: 45,
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-13.png"),
+    slides_url: "https://docs.google.com/presentation/d/1Y0gfkgH0EPb45dsMh16a36fUOXRnfCphUHQ-yQ0vGnc/edit?usp=sharing",
+  },
+  {
+    number: "12",
+    topic_en: "People in the Center: Automation for Your Everyday Work",
+    topic_es: "Las personas en el centro: automatización para tu trabajo diario",
+    description_en:
+      "What if you could delegate your day-to-day administrative tasks to focus on what matters: people? This hands-on talk breaks the myth that automating processes requires programming expertise. Through a case study, we show how combining Google Gemini with Apps Script lets you design tailored solutions inside the tools you already use — Sheets, Docs, and Drive.",
+    description_es:
+      "¿Y si pudieras delegar tus tareas administrativas del día a día para enfocarte en lo que importa: las personas? Esta charla práctica rompe el mito de que automatizar procesos requiere saber programar. A través de un caso de estudio, mostramos cómo combinar Google Gemini con Apps Script para diseñar soluciones a la medida dentro de las herramientas que ya usas: Sheets, Docs y Drive.",
+    speakers: ["Ángela Barrera"],
+    date: "2026-07-16",
+    time: "3:00 PM CST",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-12.png"),
+    recording_url: "https://drive.google.com/file/d/1D9cFBt36Iu8oGdFBPKcuoTRPteZiWrnz/view?usp=drive_link",
+    slides_url: "https://docs.google.com/presentation/d/1Y0gfkgH0EPb45dsMh16a36fUOXRnfCphUHQ-yQ0vGnc/edit?usp=sharing",
+  },
+  {
+    number: "11",
+    topic_en: "Garbage In, Garbage Out: How SDD Kills the Fix-and-Pray Cycle",
+    topic_es:
+      "Garbage In, Garbage Out: cómo el SDD acaba con el ciclo de arreglar y rezar",
+    description_en:
+      "Do you give the AI a vague prompt and pray the code works? Welcome to the fix-and-pray cycle. In this session you'll see live how Spec-Driven Development (SDD) breaks it: we build the same project twice — once with a generic prompt, once following the SDD workflow (Spec → Plan → Tasks) — and measure exactly what fails and what doesn't. For anyone who works with AI day to day and wants to stop guessing and start building with intention.",
+    description_es:
+      "¿Le das a la IA un prompt vago y rezas para que el código funcione? Bienvenido al ciclo de 'arreglar y rezar'. En esta sesión verás en vivo cómo el Desarrollo Guiado por Especificaciones (SDD) lo rompe: construimos el mismo proyecto dos veces —una con un prompt genérico y otra siguiendo el flujo SDD (Spec → Plan → Tasks)— y medimos exactamente qué falla y qué no. Para quienes trabajan con IA a diario y quieren dejar de adivinar para construir con intención.",
+    speakers: ["Cristian Villamil", "Sebastián Benavides"],
+    date: "2026-07-02",
+    time: "Jul 2, 4:00 PM CST (ES) · Jul 3, 9:00 AM CST (EN)",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-11.png"),
+    recording_url: "https://drive.google.com/file/d/1uhhSt2WdheThjgsZxloLZPIn4oVGUXC-/view",
+    download_url: assetUrl("recursos/prompts-live-demo-garbage-in-out.zip"),
+  },
+  {
+    number: "10",
+    topic_en: "Workflow Automations for PMs: AI Skills with Claude Code",
+    topic_es: "Automatización de flujos para PMs: skills de IA con Claude Code",
+    description_en:
+      "Becoming an AI-native company is about empowerment, not replacement. In this session we explore how PMs can use Claude Code to automate repetitive workflows — like generating weekly steering committee reports directly from Jira and Confluence — without writing a single line of code or managing API tokens. The goal isn't to replace your tools; it's to put you back in control so you spend less time on setup and reporting, and more on the work that moves the needle.",
+    description_es:
+      "Convertirse en una empresa AI-native se trata de potenciar a las personas, no de reemplazarlas. En esta sesión exploramos cómo los PMs pueden usar Claude Code para automatizar flujos repetitivos —como generar reportes semanales de steering committee directamente desde Jira y Confluence— sin escribir una sola línea de código ni gestionar tokens de API. El objetivo no es reemplazar tus herramientas, sino devolverte el control para dedicar menos tiempo a la configuración y los reportes, y más al trabajo que realmente mueve la aguja.",
+    speakers: ["Marvin Herrera", "Julio Núñez"],
+    date: "2026-06-11",
+    time: "9:00 AM CST",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-10.png"),
+    recording_url: "https://drive.google.com/file/d/1Rk9vBNkBPeAXss7UK0R2Ax2-WjJd13Sj/view",
+  },
   {
     number: "09",
     topic_en: "Automated Deployments in Databricks (CI/CD)",
@@ -37,8 +113,9 @@ export const sessions: Session[] = [
     meeting_url: "https://meet.google.com/bvn-heyo-vef",
     duration_minutes: 60,
     tags: ["MLOps", "Data Engineering"],
-    status: "upcoming",
-    image: "/AI_at_Work v2.png",
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-9.png"),
+    recording_url: "https://drive.google.com/file/d/1gcN3BuNzMhFjNr-PIS0Tb5D7eF-cgh8v/view",
   },
   {
     number: "08",
@@ -54,7 +131,7 @@ export const sessions: Session[] = [
     location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
     tags: ["GenAI"],
     status: "past",
-    image: "/Data & AI March 12-6.png",
+    image: assetUrl("Charlas/AI_at_Work-8.png"),
     recording_url:
       "https://docs.google.com/videos/d/1MAZpxewip-B_fK6p5Gss3VrvdFwlgDHfUvMvWO-tgR4/edit?scene=id.p#scene=id.p",
   },
@@ -72,7 +149,7 @@ export const sessions: Session[] = [
     location: "Hybrid - Medellín Wizeline offices & Remote via Google Meet",
     tags: ["GenAI"],
     status: "past",
-    image: "/Data & AI March 12-4.png",
+    image: assetUrl("Charlas/AI_at_Work-7.png"),
     recording_url:
       "https://drive.google.com/drive/folders/1Juhk5lg3_E3lChXUeINqDt9ztlNUHlto",
   },
@@ -91,7 +168,7 @@ export const sessions: Session[] = [
     location: "Remote via Google Meet",
     tags: ["Security", "GenAI"],
     status: "past",
-    image: "/Data & AI March 12.png",
+    image: assetUrl("Charlas/AI_at_Work-6.png"),
     recording_url:
       "https://drive.google.com/drive/folders/16BuEq8YQTx9CSGmna8XkF7uXd7eXVhSw",
     slides_url:
@@ -109,7 +186,7 @@ export const sessions: Session[] = [
     status: "past",
     recording_url: "https://drive.google.com/file/d/1pm_6C0sZxy1u-GVWSFcWGespOQ1w0c80/view?usp=drive_link",
     slides_url: "https://docs.google.com/presentation/d/1DqfGdMQEQn_hmbRI9n9LkJ6GgAibaW_ZAyj6AYtzEsM/edit?usp=drive_link",
-    image: "/Internal - Data & AI Tech Talks - Co-2.png",
+    image: assetUrl("Charlas/AI_at_Work-5.png"),
   },
   {
     number: "04",
@@ -123,7 +200,7 @@ export const sessions: Session[] = [
     recording_url: "https://drive.google.com/file/d/1mjXmB5RKOUroqSuSYfhaW81UigqrAxDn/view?usp=drive_link",
     slides_url: "https://docs.google.com/presentation/d/1N3bnEmsXuz0H8gBKEwcwhThazWKDKC5uD--SilWntH8/edit?usp=sharing",
     github_url: "https://github.com/yharyarias-wize/demo-ai-talk-mlops-docker",
-    image: "/Yhary Eng v1.png",
+    image: assetUrl("Charlas/AI_at_Work-4.png"),
   },
   {
     number: "03",
@@ -132,12 +209,12 @@ export const sessions: Session[] = [
     topic_es:
       "Optimización de rendimiento en Spark: errores comunes y buenas prácticas",
     speakers: ["Mateo Soto"],
-    date: "2024-12-03",
+    date: "2025-12-03",
     tags: ["Data Engineering"],
     status: "past",
     recording_url: "https://drive.google.com/file/d/1MjKDewdkplmN-Nn9SUrvsiV3j8hEA012/view?usp=sharing",
     slides_url: "https://docs.google.com/presentation/d/1Yh9kGD_uBlh7dQFFlEWwJxlko374RImNDOM554kCVmY/edit?usp=sharing",
-    image: "/Data & AI Tech Talks - Co Interno-4 (1).png",
+    image: assetUrl("Charlas/AI_at_Work-3.png"),
   },
   {
     number: "02",
@@ -145,12 +222,12 @@ export const sessions: Session[] = [
     topic_es:
       "Del dato al impacto: buenas prácticas de inteligencia visual",
     speakers: ["Daniela Ríos"],
-    date: "2024-11-19",
+    date: "2025-11-19",
     tags: ["Visualization"],
     status: "past",
     recording_url: "https://drive.google.com/file/d/14eb7l7tREdFYEdI80O_4tUM9BPAS_ONO/view?usp=sharing",
     slides_url: "https://docs.google.com/presentation/d/1RKIYF6nMTdFKz7Y4d4iiCl8Ptyr310zj/edit?usp=sharing&ouid=117648850710748495484&rtpof=true&sd=true",
-    image: "/DaniRios.png",
+    image: assetUrl("Charlas/AI_at_Work-2.png"),
   },
   {
     number: "01",
@@ -159,11 +236,12 @@ export const sessions: Session[] = [
     topic_es:
       "El ROI del GenAI: por qué el 95% de los proyectos fracasa y cómo solucionarlo",
     speakers: ["Santi Merchán"],
-    date: "2024-11-05",
+    date: "2025-11-05",
     tags: ["GenAI"],
     status: "past",
     recording_url: "https://drive.google.com/file/d/1HgX9cT0cfHt6a5_Hc95IMeivuMbr78Sh/view?usp=sharing",
     slides_url: "https://docs.google.com/presentation/d/1zujZgIdvNVFyX_pmtd2McSlbHiH7oA4NAGeUxA2kUmM/edit?usp=sharing",
+    image: assetUrl("Charlas/AI_at_Work-1.png"),
   },
 ];
 

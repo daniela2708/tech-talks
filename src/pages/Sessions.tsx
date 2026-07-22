@@ -2,9 +2,9 @@ import { useState, useMemo } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useNow } from "@/hooks/useNow";
 import { sessions, allTags } from "@/data/sessions";
-import { Play, FileText, Github, CalendarPlus, LayoutGrid, List, ExternalLink } from "lucide-react";
+import { Play, FileText, Github, Download, CalendarPlus, LayoutGrid, List, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
-import { getTrustedExternalHref } from "@/lib/security";
+import { getTrustedDownloadHref, getTrustedExternalHref } from "@/lib/security";
 import {
   getSessionCalendarHref,
   getSessionDisplayDate,
@@ -43,13 +43,17 @@ export default function Sessions() {
             {/* View toggle */}
             <div className="flex items-center border border-border rounded-sm overflow-hidden mr-auto">
               <button
+                type="button"
                 onClick={() => setView("grid")}
+                aria-pressed={view === "grid"}
                 className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${view === "grid" ? "bg-foreground text-background" : "text-muted-foreground"}`}
               >
                 <LayoutGrid size={14} /> {t.sessions_page.grid}
               </button>
               <button
+                type="button"
                 onClick={() => setView("list")}
+                aria-pressed={view === "list"}
                 className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${view === "list" ? "bg-foreground text-background" : "text-muted-foreground"}`}
               >
                 <List size={14} /> {t.sessions_page.list}
@@ -60,8 +64,10 @@ export default function Sessions() {
             <div className="flex gap-2">
               {(["all", "upcoming", "past"] as const).map((s) => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => { setStatusFilter(s); if (s === "all") setTagFilter(null); }}
+                  aria-pressed={statusFilter === s}
                   className={`px-3 py-1.5 text-xs font-medium rounded-sm border transition-colors ${
                     statusFilter === s
                       ? "border-foreground bg-foreground text-background"
@@ -77,8 +83,10 @@ export default function Sessions() {
             <div className="flex flex-wrap gap-2">
               {allTags.map((tag) => (
                 <button
+                  type="button"
                   key={tag}
                   onClick={() => setTagFilter(tagFilter === tag ? null : tag)}
+                  aria-pressed={tagFilter === tag}
                   className={`px-3 py-1.5 text-xs font-medium rounded-sm border transition-colors ${
                     tagFilter === tag
                       ? "border-primary bg-primary text-primary-foreground"
@@ -93,21 +101,22 @@ export default function Sessions() {
 
           {/* Sessions */}
           <div className={view === "grid" ? "grid gap-6 md:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
-            {filtered.map((session) => (
-              (() => {
+            {filtered.map((session) => {
                 const sessionStatus = getSessionStatus(session, now);
                 const recordingHref = getTrustedExternalHref(session.recording_url);
                 const slidesHref = getTrustedExternalHref(session.slides_url);
                 const githubHref = getTrustedExternalHref(session.github_url);
+                const downloadHref = getTrustedDownloadHref(session.download_url);
                 const meetingHref = getTrustedExternalHref(session.meeting_url);
                 const calendarHref = getTrustedExternalHref(getSessionCalendarHref(session));
-                const hasPastActions = Boolean(recordingHref || slidesHref || githubHref);
+                const hasPastActions = Boolean(recordingHref || slidesHref || githubHref || downloadHref);
                 const hasUpcomingActions = Boolean(meetingHref || calendarHref);
 
                 return (
                   <div
                     key={session.number}
                     className={`border border-border rounded-sm overflow-hidden ${view === "list" ? "flex items-start" : "flex flex-col"}`}
+                    style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}
                   >
                     {view === "grid" && (
                       <div className="w-full aspect-[3/4] overflow-hidden bg-black flex items-center justify-center shrink-0">
@@ -116,6 +125,8 @@ export default function Sessions() {
                             src={session.image}
                             alt={lang === "en" ? session.topic_en : session.topic_es}
                             className="h-full w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
                           />
                         ) : (
                           <SessionCover session={session} lang={lang} />
@@ -188,6 +199,15 @@ export default function Sessions() {
                                   <Github size={12} /> {t.sessions_page.code}
                                 </a>
                               )}
+                              {downloadHref && (
+                                <a
+                                  href={downloadHref}
+                                  download
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-sm border border-border text-foreground hover:bg-muted transition-colors"
+                                >
+                                  <Download size={12} /> {t.sessions_page.download}
+                                </a>
+                              )}
                             </>
                           )}
                           {sessionStatus === "upcoming" && (
@@ -225,6 +245,8 @@ export default function Sessions() {
                             src={session.image}
                             alt={lang === "en" ? session.topic_en : session.topic_es}
                             className="h-full w-full object-cover"
+                            loading="lazy"
+                            decoding="async"
                           />
                         ) : (
                           <SessionCover session={session} lang={lang} compact />
@@ -233,8 +255,7 @@ export default function Sessions() {
                     )}
                   </div>
                 );
-              })()
-            ))}
+              })}
           </div>
         </div>
       </section>

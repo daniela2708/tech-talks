@@ -61,6 +61,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           {!isHome && (
             <button
+              type="button"
               onClick={() => navigate(-1)}
               className="hidden md:flex items-center gap-1.5 text-xs font-body font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -81,6 +82,7 @@ export function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <button
+              type="button"
               key={link.id}
               onClick={() => scrollToSection(link.id)}
               className="text-sm font-body font-medium text-muted-foreground transition-opacity hover:opacity-80"
@@ -102,9 +104,12 @@ export function Header() {
           </a>
           <LanguageToggle />
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
             className="md:hidden text-foreground"
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -113,10 +118,11 @@ export function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-border bg-background px-6 pb-6 pt-4">
+        <div id="mobile-navigation" className="md:hidden border-t border-border bg-background px-6 pb-6 pt-4">
           <nav className="flex flex-col gap-4">
             {!isHome && (
               <button
+                type="button"
                 onClick={() => { navigate(-1); setMenuOpen(false); }}
                 className="flex items-center gap-1.5 text-sm font-body font-medium text-muted-foreground"
               >
@@ -126,6 +132,7 @@ export function Header() {
             )}
             {navLinks.map((link) => (
               <button
+                type="button"
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className="text-sm font-body font-medium text-muted-foreground text-left"

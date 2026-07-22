@@ -117,6 +117,7 @@ export const es = {
     library_label: "Biblioteca",
     watch: "Ver grabación",
     slides: "Diapositivas",
+    download: "Descargar materiales",
   },
   newsletter_section: {
     heading: "Mantente al tanto.",
@@ -142,6 +143,7 @@ export const es = {
     watch: "Ver grabación",
     slides: "Ver diapositivas",
     code: "Ver código",
+    download: "Descargar materiales",
     join_live: "Unirse por Meet",
     add_calendar: "Agregar al calendario",
   },

@@ -19,11 +19,11 @@ import {
   Images,
   CalendarPlus,
   ExternalLink,
+  Download,
 } from "lucide-react";
 import { sessions, type Session } from "@/data/sessions";
 import { format } from "date-fns";
-import heroTeamImg from "@/assets/hero-team.jpg";
-import { getTrustedExternalHref } from "@/lib/security";
+import { getTrustedDownloadHref, getTrustedExternalHref } from "@/lib/security";
 import {
   getSessionCalendarHref,
   getSessionDayDistance,
@@ -31,6 +31,10 @@ import {
   getSessionStatus,
 } from "@/lib/sessions";
 import { SessionCover } from "@/components/ui/SessionCover";
+import { assetUrl } from "@/lib/assets";
+
+// Hoisted static icon list — avoids recreating the array on every list item (rendering-hoist-jsx).
+const WHY_ICONS = [Lightbulb, Code, BarChart3, MessageSquare];
 
 function HeroTicker({ now }: { now: Date }) {
   const pastSessions = sessions.filter((session) => getSessionStatus(session, now) === "past");
@@ -139,6 +143,7 @@ function VideoPreviewCard({ session }: { session: Session }) {
   const { lang, t } = useLanguage();
   const recordingHref = getTrustedExternalHref(session.recording_url);
   const slidesHref = getTrustedExternalHref(session.slides_url);
+  const downloadHref = getTrustedDownloadHref(session.download_url);
 
   return (
     <div className="border border-border rounded-sm overflow-hidden group hover:border-primary/40 transition-colors duration-300">
@@ -181,6 +186,16 @@ function VideoPreviewCard({ session }: { session: Session }) {
               <span>{t.featured.slides}</span>
             </a>
           )}
+          {downloadHref && (
+            <a
+              href={downloadHref}
+              download
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Download size={14} />
+              <span>{t.featured.download}</span>
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -200,10 +215,9 @@ const DIV_LAYERS = [
 ] as const;
 const DIV_ACTIVE = new Set(["0-1","1-2","2-2","3-2","4-2","5-2","6-2","7-1"]);
 
-function NNDivider() {
-  const { t } = useLanguage();
-  return (
-    <div className="relative h-[72px] overflow-hidden bg-[#020617] border-y border-white/[0.05]">
+// The neural-network SVG is fully static — hoist it so the (large) element tree
+// isn't recreated on every NNDivider render, e.g. on language toggle (rendering-hoist-jsx).
+const NN_NETWORK = (
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full"
@@ -295,6 +309,13 @@ function NNDivider() {
         {/* Mask: hides network at edges + center (text zone) */}
         <rect x="0" y="0" width="1440" height="72" fill="url(#div-mask)"/>
       </svg>
+);
+
+function NNDivider() {
+  const { t } = useLanguage();
+  return (
+    <div className="relative h-[72px] overflow-hidden bg-[#020617] border-y border-white/[0.05]">
+      {NN_NETWORK}
 
       {/* Centered phrase */}
       <div className="absolute inset-0 flex items-center justify-center">
@@ -327,8 +348,9 @@ const MATRIX_POS: Record<string, string> = {
   bl: "bottom-0 left-0",
   br: "bottom-0 right-0",
 };
+const MATRIX_COLS = [BIN_COL_A, BIN_COL_B, BIN_COL_C, BIN_COL_D];
+
 function MatrixCorner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
-  const cols = [BIN_COL_A, BIN_COL_B, BIN_COL_C, BIN_COL_D];
   const mask = MATRIX_MASK[pos];
   return (
     <div
@@ -337,7 +359,7 @@ function MatrixCorner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
       style={{ maskImage: mask, WebkitMaskImage: mask }}
     >
       <div className="flex gap-4 font-mono text-[12px] leading-[1.65] text-emerald-400/[0.82]">
-        {cols.map((col, ci) => (
+        {MATRIX_COLS.map((col, ci) => (
           <div
             key={ci}
             className="flex flex-col whitespace-nowrap"
@@ -359,39 +381,12 @@ export default function Home() {
     (session) => getSessionStatus(session, now) === "past" && session.recording_url,
   );
   const articleIcons = [FileText, Lightbulb, MessageSquare];
+  // Collage original: hero (2×2) + 2 pequeñas + 1 foto vertical al lado.
   const galleryPhotos = [
-    {
-      src: "/Charlas/IMG_1603 (1).jpg",
-      alt: t.community_gallery.photo2_alt,
-      label: t.community_gallery.chips[0],
-      objectPos: "object-[52%_44%]",
-      gridClass: "col-span-2 row-span-2",
-      aspectClass: "",
-    },
-    {
-      src: "/Charlas/IMG_1600 (1).jpg",
-      alt: t.community_gallery.photo1_alt,
-      label: t.community_gallery.chips[2],
-      objectPos: "object-center",
-      gridClass: "col-span-1 row-span-1",
-      aspectClass: "",
-    },
-    {
-      src: "/Charlas/88fb1210-f121-4d8d-8a7c-8680f8473856.jpg",
-      alt: t.community_gallery.photo1_alt,
-      label: t.community_gallery.chips[1],
-      objectPos: "object-[58%_48%]",
-      gridClass: "col-span-1 row-span-1",
-      aspectClass: "",
-    },
-    {
-      src: "/Charlas/IMG_7879 (1).jpg",
-      alt: t.community_gallery.photo3_alt,
-      label: t.community_gallery.chips[2],
-      objectPos: "object-[50%_72%]",
-      gridClass: "col-span-1 row-span-1",
-      aspectClass: "",
-    },
+    { src: assetUrl("eventos/evento-1.jpg"), alt: t.community_gallery.photo2_alt, objectPos: "object-[52%_44%]" },
+    { src: assetUrl("eventos/evento-2.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },
+    { src: assetUrl("eventos/evento-3.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-[58%_48%]" },
+    { src: assetUrl("eventos/evento-4.jpg"), alt: t.community_gallery.photo3_alt, objectPos: "object-[50%_72%]" },
   ];
 
   return (
@@ -399,7 +394,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-4 sm:px-6">
         <img
-          src={heroTeamImg}
+          src={assetUrl("brand/hero-team.jpg")}
           alt="Professionals collaborating in a tech workspace"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
@@ -504,8 +499,7 @@ export default function Home() {
           <h2 className="font-heading text-3xl font-bold leading-tight mb-14">{t.why.heading}</h2>
           <div className="grid gap-10 md:grid-cols-2">
             {t.why.items.map((item, idx) => {
-              const icons = [Lightbulb, Code, BarChart3, MessageSquare];
-              const Icon = icons[idx % icons.length];
+              const Icon = WHY_ICONS[idx % WHY_ICONS.length];
               return (
                 <div key={item.number} className="group border-l border-white/10 pl-5">
                   <div className="flex items-center gap-2 mb-2">

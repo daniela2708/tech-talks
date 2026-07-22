@@ -1,3 +1,5 @@
+import { assetUrl } from "@/lib/assets";
+
 type BrandLockupProps = {
   theme?: "light" | "dark";
   className?: string;
@@ -13,13 +15,13 @@ export function BrandLockup({
 }: BrandLockupProps) {
   const aiLogoSrc =
     theme === "dark"
-      ? "/Logo_AI_at_Work-02.png"
-      : "/Logo_AI_at_Work_color.svg";
+      ? assetUrl("brand/logo-ai-at-work-dark.png")
+      : assetUrl("brand/logo-ai-at-work-color.svg");
 
   return (
     <div className={`flex items-center gap-3 ${className}`.trim()}>
       <img
-        src="/wizelinered.svg"
+        src={assetUrl("brand/logo-wizeline.svg")}
         alt="Wizeline"
         className={wizelineClassName}
       />
