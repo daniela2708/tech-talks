@@ -628,8 +628,8 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-[1fr_380px] lg:h-[480px]">
-              <div className="grid h-[480px] grid-cols-3 grid-rows-2 gap-2 lg:h-full">
-                <figure className="group relative col-span-2 row-span-2 overflow-hidden rounded-2xl border border-white/10">
+              <div className="grid h-[360px] grid-cols-2 grid-rows-[2fr_1fr] gap-2 sm:h-[480px] lg:h-full">
+                <figure className="group relative col-span-2 overflow-hidden rounded-2xl border border-white/10">
                   <img src={bogotaPhotos[0].src} alt={bogotaPhotos[0].alt} loading="lazy"
                     className={`h-full w-full object-cover ${bogotaPhotos[0].objectPos} transition-transform duration-700 group-hover:scale-[1.03]`}/>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
