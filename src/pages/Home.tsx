@@ -385,15 +385,15 @@ export default function Home() {
   // Fotos de la primera sesión AI at Work Bogotá (con GDG Bogotá).
   const bogotaPhotos = [
     // Bento superior: hero + 2 pequeñas + vertical
-    { src: assetUrl("eventos/evento-1.jpg"), alt: t.community_gallery.photo2_alt, objectPos: "object-[50%_42%]" }, // grupo/comunidad
-    { src: assetUrl("eventos/evento-2.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // Threads Bot con IA
-    { src: assetUrl("eventos/evento-3.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // GDG Bogotá
-    { src: assetUrl("eventos/evento-4.jpg"), alt: t.community_gallery.photo4_alt, objectPos: "object-[50%_40%]" },  // ponente + Gemini (vertical)
+    { src: assetUrl("eventos/bogota-gdg-1.jpg"), alt: t.community_gallery.photo2_alt, objectPos: "object-[50%_42%]" }, // grupo/comunidad
+    { src: assetUrl("eventos/bogota-gdg-2.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // Threads Bot con IA
+    { src: assetUrl("eventos/bogota-gdg-3.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // GDG Bogotá
+    { src: assetUrl("eventos/bogota-gdg-4.jpg"), alt: t.community_gallery.photo4_alt, objectPos: "object-[50%_40%]" },  // ponente + Gemini (vertical)
     // Tira inferior: 4 horizontales
-    { src: assetUrl("eventos/evento-5.jpg"), alt: t.community_gallery.photo5_alt, objectPos: "object-center" },     // Dan + Kim (ponentes)
-    { src: assetUrl("eventos/evento-6.jpg"), alt: t.community_gallery.photo6_alt, objectPos: "object-[50%_45%]" },  // selfie comunidad
-    { src: assetUrl("eventos/evento-7.jpg"), alt: t.community_gallery.photo7_alt, objectPos: "object-center" },     // audiencia
-    { src: assetUrl("eventos/evento-8.jpg"), alt: t.community_gallery.photo8_alt, objectPos: "object-center" },     // título de la charla
+    { src: assetUrl("eventos/bogota-gdg-5.jpg"), alt: t.community_gallery.photo5_alt, objectPos: "object-center" },     // Dan + Kim (ponentes)
+    { src: assetUrl("eventos/bogota-gdg-6.jpg"), alt: t.community_gallery.photo6_alt, objectPos: "object-[50%_45%]" },  // selfie comunidad
+    { src: assetUrl("eventos/bogota-gdg-7.jpg"), alt: t.community_gallery.photo7_alt, objectPos: "object-center" },     // audiencia
+    { src: assetUrl("eventos/bogota-gdg-8.jpg"), alt: t.community_gallery.photo8_alt, objectPos: "object-center" },     // título de la charla
   ];
   const communityPhotos = [
     { src: assetUrl("eventos/comunidad-1.jpg"), alt: t.community_gallery.original_photo2_alt, objectPos: "object-[52%_44%]" },
