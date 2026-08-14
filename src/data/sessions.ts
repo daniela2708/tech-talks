@@ -25,6 +25,38 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "15",
+    topic_en: "Beyond the Prompt: AI at Work × GDG Bogotá",
+    topic_es: "Más allá del prompt: AI at Work × GDG Bogotá",
+    description_en:
+      "A community session created with Google Developer Group Bogotá about what it takes to build valuable AI experiences. The talks covered how AI moves from strategy to measurable business impact and a hands-on journey from scattered prompts to a structured idea hub using Gemini, Google Sheets, Apps Script, and Google Cloud.",
+    description_es:
+      "Una sesión de comunidad realizada junto a Google Developer Group Bogotá sobre lo que se necesita para construir experiencias valiosas con IA. Las charlas abordaron cómo llevar la IA de la estrategia al impacto real en el negocio y cómo convertir prompts dispersos en un hub estructurado de ideas con Gemini, Google Sheets, Apps Script y Google Cloud.",
+    speakers: ["Daniel López", "Kimberly Moreno", "Leonardo Del Valle"],
+    date: "2026-08-13",
+    time: "6:00 PM COT",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-15.png"),
+  },
+  {
+    number: "14",
+    topic_en: "From Vibes to Facts: A Field Guide to Prompt Evaluation with Opik",
+    topic_es: "De la intuición a los hechos: guía práctica para evaluar prompts con Opik",
+    description_en:
+      "A practical look at prompt styles and real use cases where evaluation data reveals which approaches perform best. The session introduced Opik, an open-source framework for comparing prompts with structured datasets, LLM and persona-based graders, clear metrics, and production monitoring.",
+    description_es:
+      "Una mirada práctica a diferentes estilos de prompts y casos reales donde los datos de evaluación muestran qué enfoques funcionan mejor. La sesión presentó Opik, un framework open source para comparar prompts con datasets estructurados, evaluadores basados en LLM y personas, métricas claras y monitoreo en producción.",
+    speakers: ["Erick Hernandez"],
+    date: "2026-08-06",
+    time: "4:00 PM CST",
+    location: "Hybrid - Guadalajara Wizeline offices & Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-14.png"),
+  },
+  {
     number: "13",
     topic_en: "People in the Center: Automation for Your Everyday Work",
     topic_es: "Las personas en el centro: automatización para tu trabajo diario",

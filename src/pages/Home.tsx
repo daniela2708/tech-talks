@@ -382,12 +382,27 @@ export default function Home() {
   );
   const articleIcons = [FileText, Lightbulb, MessageSquare];
   // Collage original: hero (2×2) + 2 pequeñas + 1 foto vertical al lado.
-  const galleryPhotos = [
-    { src: assetUrl("eventos/evento-1.jpg"), alt: t.community_gallery.photo2_alt, objectPos: "object-[52%_44%]" },
-    { src: assetUrl("eventos/evento-2.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },
-    { src: assetUrl("eventos/evento-3.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-[58%_48%]" },
-    { src: assetUrl("eventos/evento-4.jpg"), alt: t.community_gallery.photo3_alt, objectPos: "object-[50%_72%]" },
+  // Fotos de la primera sesión AI at Work Bogotá (con GDG Bogotá).
+  const bogotaPhotos = [
+    // Bento superior: hero + 2 pequeñas + vertical
+    { src: assetUrl("eventos/evento-1.jpg"), alt: t.community_gallery.photo2_alt, objectPos: "object-[50%_42%]" }, // grupo/comunidad
+    { src: assetUrl("eventos/evento-2.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // Threads Bot con IA
+    { src: assetUrl("eventos/evento-3.jpg"), alt: t.community_gallery.photo1_alt, objectPos: "object-center" },     // GDG Bogotá
+    { src: assetUrl("eventos/evento-4.jpg"), alt: t.community_gallery.photo4_alt, objectPos: "object-[50%_40%]" },  // ponente + Gemini (vertical)
+    // Tira inferior: 4 horizontales
+    { src: assetUrl("eventos/evento-5.jpg"), alt: t.community_gallery.photo5_alt, objectPos: "object-center" },     // Dan + Kim (ponentes)
+    { src: assetUrl("eventos/evento-6.jpg"), alt: t.community_gallery.photo6_alt, objectPos: "object-[50%_45%]" },  // selfie comunidad
+    { src: assetUrl("eventos/evento-7.jpg"), alt: t.community_gallery.photo7_alt, objectPos: "object-center" },     // audiencia
+    { src: assetUrl("eventos/evento-8.jpg"), alt: t.community_gallery.photo8_alt, objectPos: "object-center" },     // título de la charla
   ];
+  const communityPhotos = [
+    { src: assetUrl("eventos/comunidad-1.jpg"), alt: t.community_gallery.original_photo2_alt, objectPos: "object-[52%_44%]" },
+    { src: assetUrl("eventos/comunidad-2.jpg"), alt: t.community_gallery.original_photo1_alt, objectPos: "object-center" },
+    { src: assetUrl("eventos/comunidad-3.jpg"), alt: t.community_gallery.original_photo1_alt, objectPos: "object-[58%_48%]" },
+    { src: assetUrl("eventos/comunidad-4.jpg"), alt: t.community_gallery.original_photo3_alt, objectPos: "object-[50%_72%]" },
+  ];
+  const galleryPhotos = communityPhotos;
+  const galleryChips = t.community_gallery.original_chips;
 
   return (
     <main className="pt-16">
@@ -535,17 +550,17 @@ export default function Home() {
               <Images size={20} className="text-primary" />
             </div>
             <span className="font-body text-sm font-bold uppercase text-primary">
-              {t.community_gallery.label}
+              {t.community_gallery.original_label}
             </span>
           </div>
 
           {/* Heading */}
           <div className="mb-8">
             <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
-              {t.community_gallery.heading}
+              {t.community_gallery.original_heading}
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-white/60 max-w-lg">
-              {t.community_gallery.body}
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-white/65">
+              {t.community_gallery.original_body}
             </p>
           </div>
 
@@ -557,7 +572,7 @@ export default function Home() {
                   className={`h-full w-full object-cover ${galleryPhotos[0].objectPos} transition-transform duration-700 group-hover:scale-[1.03]`}/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
-                  {t.community_gallery.chips.map((chip) => (
+                  {galleryChips.map((chip) => (
                     <span key={chip} className="inline-flex items-center rounded-full border border-white/15 bg-black/40 px-2.5 py-0.5 text-[10px] font-body font-bold uppercase text-white/75 backdrop-blur-sm">
                       {chip}
                     </span>
@@ -588,12 +603,81 @@ export default function Home() {
           {/* Quote */}
           <blockquote className="mt-6 border-l-2 border-primary/50 pl-6 py-2">
             <p className="font-body text-[10px] font-bold uppercase text-primary mb-2">
-              {t.community_gallery.quote_label}
+              {t.community_gallery.original_quote_label}
             </p>
             <p className="font-body text-base font-semibold leading-snug text-white/80">
-              "{t.community_gallery.quote}"
+              "{t.community_gallery.original_quote}"
             </p>
           </blockquote>
+
+          {/* Latest community update */}
+          <article className="mt-20 border-t border-white/10 pt-14">
+            <p className="font-body text-xs font-bold uppercase tracking-wide text-primary">
+              {t.community_gallery.label}
+            </p>
+            <div className="mb-8 mt-3">
+              <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
+                {t.community_gallery.heading}
+              </h2>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-white/65">
+                {t.community_gallery.body}
+              </p>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/50">
+                {t.community_gallery.details}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-[1fr_380px] lg:h-[480px]">
+              <div className="grid h-[480px] grid-cols-3 grid-rows-2 gap-2 lg:h-full">
+                <figure className="group relative col-span-2 row-span-2 overflow-hidden rounded-2xl border border-white/10">
+                  <img src={bogotaPhotos[0].src} alt={bogotaPhotos[0].alt} loading="lazy"
+                    className={`h-full w-full object-cover ${bogotaPhotos[0].objectPos} transition-transform duration-700 group-hover:scale-[1.03]`}/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
+                    {t.community_gallery.chips.map((chip) => (
+                      <span key={chip} className="inline-flex items-center rounded-full border border-white/15 bg-black/40 px-2.5 py-0.5 text-[10px] font-body font-bold uppercase text-white/75 backdrop-blur-sm">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </figure>
+                {[1, 2].map((i) => (
+                  <figure key={bogotaPhotos[i].src} className="group relative overflow-hidden rounded-2xl border border-white/10">
+                    <img src={bogotaPhotos[i].src} alt={bogotaPhotos[i].alt} loading="lazy"
+                      className={`h-full w-full object-cover ${bogotaPhotos[i].objectPos} transition-transform duration-700 group-hover:scale-[1.04]`}/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </figure>
+                ))}
+              </div>
+              <figure className="group relative h-64 overflow-hidden rounded-2xl border border-white/10 lg:h-full">
+                <img src={bogotaPhotos[3].src} alt={bogotaPhotos[3].alt} loading="lazy"
+                  className={`h-full w-full object-cover ${bogotaPhotos[3].objectPos} transition-transform duration-700 group-hover:scale-[1.03]`}/>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </figure>
+            </div>
+
+            <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {[4, 5, 6, 7].map((i) => (
+                <figure key={bogotaPhotos[i].src} className="group relative aspect-[3/2] overflow-hidden rounded-2xl border border-white/10">
+                  <img src={bogotaPhotos[i].src} alt={bogotaPhotos[i].alt} loading="lazy"
+                    className={`h-full w-full object-cover ${bogotaPhotos[i].objectPos} transition-transform duration-700 group-hover:scale-[1.04]`}/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </figure>
+              ))}
+            </div>
+
+            <blockquote className="mt-6 border-l-2 border-primary/50 py-2 pl-6">
+              <p className="mb-2 font-body text-[10px] font-bold uppercase text-primary">
+                {t.community_gallery.quote_label}
+              </p>
+              <p className="font-body text-base font-semibold leading-snug text-white/80">
+                "{t.community_gallery.quote}"
+              </p>
+            </blockquote>
+            <p className="mt-5 max-w-4xl text-xs leading-relaxed text-white/40">
+              {t.community_gallery.thanks}
+            </p>
+          </article>
         </div>
       </section>
 
