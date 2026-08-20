@@ -25,6 +25,28 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "16",
+    topic_en:
+      "Unlocking the Black Box: Fast Onboarding, Risk Mapping, and Business Logic Discovery",
+    topic_es:
+      "Abriendo la caja negra: onboarding rápido, mapeo de riesgos y descubrimiento de lógica de negocio",
+    description_en:
+      "What if you could understand a complex, undocumented codebase in minutes instead of weeks? This session introduces Understand Anything, an AI-powered solution that transforms code repositories into interactive knowledge graphs. Through two real project use cases, it shows how developers can onboard faster, analysts can uncover business logic without waiting on engineering teams, and organizations can reduce delivery risk from day one.",
+    description_es:
+      "¿Y si pudieras entender una base de código compleja y sin documentar en minutos en lugar de semanas? Esta sesión presenta Understand Anything, una solución impulsada por IA que transforma repositorios de código en grafos de conocimiento interactivos. A través de dos casos reales, muestra cómo acelerar el onboarding de desarrolladores, descubrir lógica de negocio sin depender de los equipos de ingeniería y reducir el riesgo de entrega desde el primer día.",
+    speakers: ["Gergo Havasi", "Gamaliel Toro"],
+    date: "2026-08-20",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-16.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1QrofLIwhXCmyOAIkq5otKJYyAqr0bC0J/view",
+    slides_url:
+      "https://docs.google.com/presentation/d/1JS32NispKCmkkob1SEu2au87BCNd_RQIG6yq01Tnj5c/edit?usp=sharing",
+  },
+  {
     number: "15",
     topic_en: "Beyond the Prompt: AI at Work × GDG Bogotá",
     topic_es: "Más allá del prompt: AI at Work × GDG Bogotá",
