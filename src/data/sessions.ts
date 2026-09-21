@@ -25,6 +25,63 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "20",
+    topic_en: "Orchestrating UX Processes, from Discovery to Implementation: Part 1",
+    topic_es: "Orquestando procesos de UX, del descubrimiento a la implementación: Parte 1",
+    description_en:
+      "Learn how AI agents, reusable UX skills, MCP connectors for design tools, and AI-ready design systems can support the complete UX process, from discovery and research to design, handoff, and post-launch. This first session focuses on the theory and foundations behind orchestrating UX processes with AI, including where UX expertise remains essential.",
+    description_es:
+      "Aprende cómo los agentes de IA, las skills reutilizables de UX, los conectores MCP para herramientas de diseño y los sistemas de diseño preparados para IA pueden apoyar todo el proceso de UX: desde el descubrimiento y la investigación hasta el diseño, el handoff y el post-lanzamiento. Esta primera sesión se enfoca en la teoría y los fundamentos para orquestar procesos de UX con IA, incluyendo dónde la experiencia de UX sigue siendo esencial.",
+    speakers: ["Silvia Pérez Felipe"],
+    date: "2026-09-22",
+    scheduled_at: "2026-09-22T10:00:00-05:00",
+    time: "9:00 AM CST / 10:00 AM COT",
+    location: "Remote via Google Meet",
+    meeting_url: "https://meet.google.com/iia-xpfc-uwn",
+    duration_minutes: 40,
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-20.png"),
+  },
+  {
+    number: "19",
+    topic_en: "Leverage NotebookLM for Your DataCamp Learning",
+    topic_es: "Potencia tu aprendizaje en DataCamp con NotebookLM",
+    description_en:
+      "Transform passive learning into an active study workflow by combining DataCamp course materials with NotebookLM. Upload transcripts, cheat sheets, and code to build a personalized AI study companion that can generate quizzes, flashcards, visual breakdowns, and audio overviews. The session also demonstrates grounded AI: answers restricted to your uploaded sources, with citations for accuracy.",
+    description_es:
+      "Transforma el aprendizaje pasivo en un flujo de estudio activo combinando los materiales de DataCamp con NotebookLM. Sube transcripciones, cheat sheets y código para crear un asistente de estudio personalizado capaz de generar cuestionarios, tarjetas de memoria, explicaciones visuales y resúmenes de audio. La sesión también muestra el valor de la IA fundamentada: respuestas limitadas a tus fuentes y respaldadas con citas.",
+    speakers: ["Pierre Drouillet"],
+    date: "2026-09-17",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-19.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1iYwXmh-9ePxzLrdChXWn9hoz1Aa6t3xd/view?usp=drive_link",
+  },
+  {
+    number: "18",
+    topic_en: "Harness Engineering vs. Loop Engineering",
+    topic_es: "Harness Engineering vs. Loop Engineering",
+    description_en:
+      "Building reliable AI agents requires moving beyond basic prompt engineering into two distinct disciplines: Harness Engineering, which provides single-run safety, deterministic constraints, and permission boundaries; and Loop Engineering, which manages state persistence, task discovery, and autonomous control loops. Learn to distinguish both paradigms, diagnose project bottlenecks with a four-step framework, and build production-ready agents.",
+    description_es:
+      "Construir agentes de IA confiables requiere ir más allá de la ingeniería de prompts y dominar dos disciplinas: Harness Engineering, que aporta seguridad en cada ejecución, restricciones deterministas y límites de permisos; y Loop Engineering, que gestiona la persistencia de estado, el descubrimiento de tareas y los ciclos de control autónomos. Aprende a distinguir ambos paradigmas, diagnosticar cuellos de botella con un marco de cuatro pasos y crear agentes listos para producción.",
+    speakers: ["Carlos Razo"],
+    date: "2026-09-10",
+    time: "4:00 PM CST",
+    location: "Guadalajara",
+    tags: ["GenAI"],
+    status: "past",
+    image: assetUrl("Charlas/AI_at_Work-18.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1U2HW5kQacu_cbMcyvtiHswZPtdqVy51Z/view?usp=sharing",
+    slides_url:
+      "https://docs.google.com/presentation/d/1vQHWggzHZxpzm7hZqBQTd6K2uZS6_4o-hD5xizwlWJg/edit?usp=sharing",
+  },
+  {
     number: "16",
     topic_en:
       "Unlocking the Black Box: Fast Onboarding, Risk Mapping, and Business Logic Discovery",
