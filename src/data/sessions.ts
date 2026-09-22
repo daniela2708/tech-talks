@@ -51,8 +51,8 @@ export const sessions: Session[] = [
     description_es:
       "Los grandes resultados de IA comienzan con un buen contexto. Explora cómo mejores entradas y una revisión humana cuidadosa aumentan la precisión, relevancia y utilidad del contenido generado por IA, y por qué un enfoque de menos es más produce comunicaciones más claras, concisas y fáciles de usar.",
     speakers: ["Angela Bauche"],
-    date: "2026-10-09",
-    scheduled_at: "2026-10-09T09:00:00-06:00",
+    date: "2026-10-16",
+    scheduled_at: "2026-10-16T09:00:00-06:00",
     time: "9:00 AM CST / 5:00 PM CEST",
     location: "Remote via Google Meet",
     duration_minutes: 60,
@@ -69,8 +69,8 @@ export const sessions: Session[] = [
     description_es:
       "Los grandes resultados de IA comienzan con un buen contexto. Explora cómo mejores entradas y una revisión humana cuidadosa aumentan la precisión, relevancia y utilidad del contenido generado por IA, y por qué un enfoque de menos es más produce comunicaciones más claras, concisas y fáciles de usar.",
     speakers: ["Angela Bauche"],
-    date: "2026-10-07",
-    scheduled_at: "2026-10-07T16:00:00-06:00",
+    date: "2026-10-14",
+    scheduled_at: "2026-10-14T16:00:00-06:00",
     time: "4:00 PM CST",
     location: "Hybrid - Guadalajara Wizeline offices & Remote via Google Meet",
     duration_minutes: 60,
