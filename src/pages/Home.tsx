@@ -28,6 +28,7 @@ import {
   getSessionCalendarHref,
   getSessionDayDistance,
   getSessionDisplayDate,
+  getSessionStartDate,
   getSessionStatus,
 } from "@/lib/sessions";
 import { SessionCover } from "@/components/ui/SessionCover";
@@ -376,7 +377,9 @@ function MatrixCorner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
 export default function Home() {
   const { t } = useLanguage();
   const now = useNow();
-  const upcomingSessions = sessions.filter((session) => getSessionStatus(session, now) === "upcoming");
+  const upcomingSessions = sessions
+    .filter((session) => getSessionStatus(session, now) === "upcoming")
+    .sort((a, b) => getSessionStartDate(a).getTime() - getSessionStartDate(b).getTime());
   const pastWithRecordings = sessions.filter(
     (session) => getSessionStatus(session, now) === "past" && session.recording_url,
   );
