@@ -25,6 +25,78 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "24",
+    topic_en: "Build to Certify: Claude Agent Workshop",
+    topic_es: "Construye para certificarte: taller de agentes con Claude",
+    description_en:
+      "Prepare for the Claude Certified Architect Foundations exam by building a functional AI agent with Claude Code. This hands-on workshop connects architectural concepts with a real implementation while covering key exam topics, practical tips, and common traps.",
+    description_es:
+      "Prepárate para el examen Claude Certified Architect Foundations construyendo un agente de IA funcional con Claude Code. Este taller práctico conecta los conceptos de arquitectura con una implementación real y repasa temas clave del examen, consejos prácticos y errores comunes.",
+    speakers: ["Santiago Merchán"],
+    date: "2026-10-28",
+    scheduled_at: "2026-10-28T16:00:00-06:00",
+    time: "4:00 PM CST",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-24.png"),
+  },
+  {
+    number: "23",
+    topic_en: "Creating AI Outputs That People Actually Use",
+    topic_es: "Creando resultados de IA que las personas realmente utilicen",
+    description_en:
+      "Great AI outputs start with great context. Explore how richer inputs and thoughtful human review improve the accuracy, relevance, and usefulness of AI-generated workplace content, and why a less-is-more approach creates clearer, more concise communication with a lower cognitive load.",
+    description_es:
+      "Los grandes resultados de IA comienzan con un buen contexto. Explora cómo mejores entradas y una revisión humana cuidadosa aumentan la precisión, relevancia y utilidad del contenido generado por IA, y por qué un enfoque de menos es más produce comunicaciones más claras, concisas y fáciles de usar.",
+    speakers: ["Angela Bauche"],
+    date: "2026-10-09",
+    scheduled_at: "2026-10-09T09:00:00-06:00",
+    time: "9:00 AM CST / 5:00 PM CEST",
+    location: "Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-23.png"),
+  },
+  {
+    number: "22",
+    topic_en: "Creating AI Outputs That People Actually Use",
+    topic_es: "Creando resultados de IA que las personas realmente utilicen",
+    description_en:
+      "Great AI outputs start with great context. Explore how richer inputs and thoughtful human review improve the accuracy, relevance, and usefulness of AI-generated workplace content, and why a less-is-more approach creates clearer, more concise communication with a lower cognitive load.",
+    description_es:
+      "Los grandes resultados de IA comienzan con un buen contexto. Explora cómo mejores entradas y una revisión humana cuidadosa aumentan la precisión, relevancia y utilidad del contenido generado por IA, y por qué un enfoque de menos es más produce comunicaciones más claras, concisas y fáciles de usar.",
+    speakers: ["Angela Bauche"],
+    date: "2026-10-07",
+    scheduled_at: "2026-10-07T16:00:00-06:00",
+    time: "4:00 PM CST",
+    location: "Hybrid - Guadalajara Wizeline offices & Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-22.png"),
+  },
+  {
+    number: "21",
+    topic_en: "The Jevons Effect in AI: Why Cheaper Tokens Aren't Lowering Your Cloud Bill",
+    topic_es: "El efecto Jevons en IA: por qué los tokens más baratos no reducen tu factura cloud",
+    description_en:
+      "Lower token prices do not necessarily reduce enterprise AI costs. As AI becomes more affordable, agentic workflows, multi-step reasoning, and long-context retrieval can significantly increase token consumption. Explore why token governance and system architecture are essential to keeping AI spending under control.",
+    description_es:
+      "Los tokens más baratos no necesariamente reducen los costos empresariales de IA. A medida que la IA se vuelve más accesible, los flujos agénticos, el razonamiento de varios pasos y la recuperación de contextos extensos pueden aumentar significativamente el consumo. Explora por qué la gobernanza de tokens y la arquitectura de sistemas son esenciales para controlar el gasto en IA.",
+    speakers: ["John Sánchez"],
+    date: "2026-09-30",
+    scheduled_at: "2026-09-30T16:00:00-06:00",
+    time: "4:00 PM CST",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI", "Data Engineering"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-21.png"),
+  },
+  {
     number: "20",
     topic_en: "Orchestrating UX Processes, from Discovery to Implementation: Part 1",
     topic_es: "Orquestando procesos de UX, del descubrimiento a la implementación: Parte 1",
