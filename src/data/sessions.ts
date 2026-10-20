@@ -25,6 +25,25 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "25",
+    topic_en:
+      "Orchestrating UX Processes, from Discovery to Implementation: Part 2 (Workshop)",
+    topic_es:
+      "Orquestando procesos de UX, del descubrimiento a la implementación: Parte 2 (Taller)",
+    description_en:
+      "Learn how to create AI agents, reusable UX skills, MCP connectors for design tools, and AI-ready design systems that support real UX workflows. This hands-on workshop shows how AI can help across discovery, research, design, handoff, and post-launch in a practical and reusable way.",
+    description_es:
+      "Aprende a crear agentes de IA, skills reutilizables de UX, conectores MCP para herramientas de diseño y sistemas de diseño preparados para IA que apoyen flujos de trabajo reales de UX. Este taller práctico muestra cómo la IA puede ayudar en el descubrimiento, la investigación, el diseño, el handoff y el post-lanzamiento de una forma práctica y reutilizable.",
+    speakers: ["Silvia Pérez Felipe"],
+    date: "2026-11-17",
+    scheduled_at: "2026-11-17T09:00:00-06:00",
+    time: "9:00 AM CST / 5:00 PM CEST",
+    location: "Remote via Google Meet",
+    tags: ["GenAI"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-25.png"),
+  },
+  {
     number: "24",
     topic_en: "Build to Certify: Claude Agent Workshop",
     topic_es: "Construye para certificarte: taller de agentes con Claude",
@@ -43,6 +62,51 @@ export const sessions: Session[] = [
     image: assetUrl("Charlas/AI_at_Work-24.png"),
   },
   {
+    number: "23A",
+    topic_en: "Selling AI, One Story at a Time",
+    topic_es: "Vendiendo IA, una historia a la vez",
+    description_en:
+      "Take a closer look at the AI solutions being built with Coca-Cola FEMSA and the business impact they are driving. Meet the teams behind the projects through practical examples, step-by-step breakdowns, and interactive demos that bring the solutions to life.",
+    description_es:
+      "Conoce de cerca las soluciones de IA que se están construyendo con Coca-Cola FEMSA y el impacto que están generando en el negocio. Conoce a los equipos detrás de los proyectos mediante ejemplos prácticos, explicaciones paso a paso y demostraciones interactivas que dan vida a las soluciones.",
+    speakers: ["Victor Regueira", "Jorge Martínez", "Heriberto Pérez"],
+    date: "2026-10-23",
+    scheduled_at: "2026-10-23T09:00:00-06:00",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    tags: ["GenAI", "Business"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-23A.png"),
+    recording_url:
+      "https://drive.google.com/file/d/13YqdBVahhTb7TCiLjD8ewZA3GY6AjhVt/view?usp=drive_link",
+    slides_url:
+      "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
+  },
+  {
+    number: "23B",
+    topic_en: "From ML to Business Impact",
+    topic_es: "Del machine learning al impacto de negocio",
+    description_en:
+      "Explore practical AI and machine learning use cases for conversations with prospects and clients. The session presents customer characterization and logistics optimization through two real project walkthroughs that showcase Wizeline's ML capabilities.",
+    description_es:
+      "Explora casos prácticos de IA y machine learning para conversar con prospectos y clientes. La sesión presenta caracterización de clientes y optimización logística mediante el recorrido de dos proyectos reales que muestran las capacidades de ML de Wizeline.",
+    speakers: [
+      "Adrian Morales",
+      "Javi Nieto",
+      "Heriberto Pérez",
+      "Victor Regueira",
+      "Manuel Luna",
+      "Sebastian Cardona",
+    ],
+    date: "2026-10-23",
+    scheduled_at: "2026-10-23T09:00:00-06:00",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    tags: ["Machine Learning", "Business"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-23B.png"),
+  },
+  {
     number: "23",
     topic_en: "Creating AI Outputs That People Actually Use",
     topic_es: "Creando resultados de IA que las personas realmente utilicen",
@@ -59,6 +123,10 @@ export const sessions: Session[] = [
     tags: ["GenAI"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-23.png"),
+    recording_url:
+      "https://drive.google.com/file/d/15cd_XZf04UCBS1c55zsSb0NvodQA8Y5B/view",
+    slides_url:
+      "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
   },
   {
     number: "22",
@@ -77,6 +145,10 @@ export const sessions: Session[] = [
     tags: ["GenAI"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-22.png"),
+    recording_url:
+      "https://drive.google.com/file/d/15cd_XZf04UCBS1c55zsSb0NvodQA8Y5B/view",
+    slides_url:
+      "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
   },
   {
     number: "21",
@@ -95,6 +167,10 @@ export const sessions: Session[] = [
     tags: ["GenAI", "Data Engineering"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-21.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1LPl26KKBKQPGq_8MqQei65SAInOFgMB3/view?usp=drive_link",
+    slides_url:
+      "https://docs.google.com/presentation/d/1Ru6eoKpvnZ84U7ZLpjW7k1P9qzm4y9eJsUd9pCob3pY/edit?usp=drive_link",
   },
   {
     number: "20",
@@ -114,6 +190,10 @@ export const sessions: Session[] = [
     tags: ["GenAI"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-20.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1MpRpEet5UcEhBhnnkAX-zI0X1jWqfATa/view?usp=drive_link",
+    slides_url:
+      "https://docs.google.com/presentation/d/1A7Z9Srx-Dig4abTSoAx3WdSF60J_RVjc/edit?usp=drive_link&ouid=117648850710748495484&rtpof=true&sd=true",
   },
   {
     number: "19",
@@ -132,6 +212,8 @@ export const sessions: Session[] = [
     image: assetUrl("Charlas/AI_at_Work-19.png"),
     recording_url:
       "https://drive.google.com/file/d/1iYwXmh-9ePxzLrdChXWn9hoz1Aa6t3xd/view?usp=drive_link",
+    slides_url:
+      "https://docs.google.com/presentation/d/1vQHWggzHZxpzm7hZqBQTd6K2uZS6_4o-hD5xizwlWJg/edit?usp=drive_link",
   },
   {
     number: "18",
@@ -206,6 +288,10 @@ export const sessions: Session[] = [
     tags: ["GenAI"],
     status: "past",
     image: assetUrl("Charlas/AI_at_Work-14.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1N7VU3CO3QU-tYpjXyPZJx9d-FSsv5_rz/view?usp=sharing",
+    slides_url:
+      "https://docs.google.com/presentation/d/1NInRPhsyQhrFQc1qaOBFPwEgmindxE1mQCRu3XPh_F8/edit?usp=sharing",
   },
   {
     number: "13",
