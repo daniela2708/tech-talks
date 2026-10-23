@@ -48,39 +48,18 @@ export const sessions: Session[] = [
     topic_en: "Build to Certify: Claude Agent Workshop",
     topic_es: "Construye para certificarte: taller de agentes con Claude",
     description_en:
-      "Prepare for the Claude Certified Architect Foundations exam by building a functional AI agent with Claude Code. This hands-on workshop connects architectural concepts with a real implementation while covering key exam topics, practical tips, and common traps.",
+      "This session marks one year of AI at Work. Prepare for the Claude Certified Architect Foundations exam by building a functional AI agent with Claude Code. This hands-on workshop connects architectural concepts with a real implementation while covering key exam topics, practical tips, and common traps.",
     description_es:
-      "Prepárate para el examen Claude Certified Architect Foundations construyendo un agente de IA funcional con Claude Code. Este taller práctico conecta los conceptos de arquitectura con una implementación real y repasa temas clave del examen, consejos prácticos y errores comunes.",
+      "Esta sesión celebra un año de AI at Work. Prepárate para el examen Claude Certified Architect Foundations construyendo un agente de IA funcional con Claude Code. Este taller práctico conecta los conceptos de arquitectura con una implementación real y repasa temas clave del examen, consejos prácticos y errores comunes.",
     speakers: ["Santiago Merchán"],
-    date: "2026-10-28",
-    scheduled_at: "2026-10-28T16:00:00-06:00",
+    date: "2026-11-04",
+    scheduled_at: "2026-11-04T16:00:00-06:00",
     time: "4:00 PM CST",
     location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
     duration_minutes: 60,
     tags: ["GenAI"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-24.png"),
-  },
-  {
-    number: "23A",
-    topic_en: "Selling AI, One Story at a Time",
-    topic_es: "Vendiendo IA, una historia a la vez",
-    description_en:
-      "Take a closer look at the AI solutions being built with Coca-Cola FEMSA and the business impact they are driving. Meet the teams behind the projects through practical examples, step-by-step breakdowns, and interactive demos that bring the solutions to life.",
-    description_es:
-      "Conoce de cerca las soluciones de IA que se están construyendo con Coca-Cola FEMSA y el impacto que están generando en el negocio. Conoce a los equipos detrás de los proyectos mediante ejemplos prácticos, explicaciones paso a paso y demostraciones interactivas que dan vida a las soluciones.",
-    speakers: ["Victor Regueira", "Jorge Martínez", "Heriberto Pérez"],
-    date: "2026-10-23",
-    scheduled_at: "2026-10-23T09:00:00-06:00",
-    time: "9:00 AM CST",
-    location: "Remote via Google Meet",
-    tags: ["GenAI", "Business"],
-    status: "upcoming",
-    image: assetUrl("Charlas/AI_at_Work-23A.png"),
-    recording_url:
-      "https://drive.google.com/file/d/13YqdBVahhTb7TCiLjD8ewZA3GY6AjhVt/view?usp=drive_link",
-    slides_url:
-      "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
   },
   {
     number: "23B",
@@ -105,6 +84,10 @@ export const sessions: Session[] = [
     tags: ["Machine Learning", "Business"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-23B.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1t2uPru08MKaMleedFs41ka1c8U92NMKm/view",
+    slides_url:
+      "https://drive.google.com/drive/folders/1xilBkM_A4yqH55nQ9oXhGLIl31ZEWQUS",
   },
   {
     number: "23",
@@ -147,6 +130,27 @@ export const sessions: Session[] = [
     image: assetUrl("Charlas/AI_at_Work-22.png"),
     recording_url:
       "https://drive.google.com/file/d/15cd_XZf04UCBS1c55zsSb0NvodQA8Y5B/view",
+    slides_url:
+      "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
+  },
+  {
+    number: "23A",
+    topic_en: "Selling AI, One Story at a Time",
+    topic_es: "Vendiendo IA, una historia a la vez",
+    description_en:
+      "Take a closer look at the AI solutions being built with Coca-Cola FEMSA and the business impact they are driving. Meet the teams behind the projects through practical examples, step-by-step breakdowns, and interactive demos that bring the solutions to life.",
+    description_es:
+      "Conoce de cerca las soluciones de IA que se están construyendo con Coca-Cola FEMSA y el impacto que están generando en el negocio. Conoce a los equipos detrás de los proyectos mediante ejemplos prácticos, explicaciones paso a paso y demostraciones interactivas que dan vida a las soluciones.",
+    speakers: ["Victor Regueira", "Jorge Martínez", "Heriberto Pérez"],
+    date: "2026-10-07",
+    scheduled_at: "2026-10-07T09:00:00-06:00",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    tags: ["GenAI", "Business"],
+    status: "upcoming",
+    image: assetUrl("Charlas/AI_at_Work-23A.png"),
+    recording_url:
+      "https://drive.google.com/file/d/13YqdBVahhTb7TCiLjD8ewZA3GY6AjhVt/view?usp=drive_link",
     slides_url:
       "https://docs.google.com/presentation/d/1Q_Tiv3na29OUmVHec49BkmqOfft2V3P5wMBLZGdN39A/edit?usp=drive_link",
   },
