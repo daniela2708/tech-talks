@@ -45,16 +45,16 @@ export const sessions: Session[] = [
   },
   {
     number: "24",
-    topic_en: "Build to Certify: Claude Agent Workshop",
-    topic_es: "Construye para certificarte: taller de agentes con Claude",
+    topic_en: "Build to Certify: Your First AI Agent with Claude Code",
+    topic_es: "Construye para certificarte: tu primer agente de IA con Claude Code",
     description_en:
-      "This session marks one year of AI at Work. Prepare for the Claude Certified Architect Foundations exam by building a functional AI agent with Claude Code. This hands-on workshop connects architectural concepts with a real implementation while covering key exam topics, practical tips, and common traps.",
+      "This session marks one year of AI at Work. Prepare for the Claude Certified Architect Foundations exam by building a functional AI agent with Claude Code. This hands-on workshop connects architectural concepts with a real implementation while covering key exam topics, practical tips, and common traps. Please arrive with Claude Code installed and ready to use on your computer so we can build together.",
     description_es:
-      "Esta sesión celebra un año de AI at Work. Prepárate para el examen Claude Certified Architect Foundations construyendo un agente de IA funcional con Claude Code. Este taller práctico conecta los conceptos de arquitectura con una implementación real y repasa temas clave del examen, consejos prácticos y errores comunes.",
+      "Esta sesión celebra un año de AI at Work. Prepárate para el examen Claude Certified Architect Foundations construyendo un agente de IA funcional con Claude Code. Este taller práctico conecta los conceptos de arquitectura con una implementación real y repasa temas clave del examen, consejos prácticos y errores comunes. Llega con Claude Code instalado y listo para usar en tu computadora para construir juntos.",
     speakers: ["Santiago Merchán"],
     date: "2026-11-04",
-    scheduled_at: "2026-11-04T16:00:00-06:00",
-    time: "4:00 PM CST",
+    scheduled_at: "2026-11-04T15:00:00-06:00",
+    time: "3:00 PM CST",
     location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
     duration_minutes: 60,
     tags: ["GenAI"],
