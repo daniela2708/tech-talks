@@ -25,6 +25,46 @@ export interface Session {
 
 export const sessions: Session[] = [
   {
+    number: "27",
+    topic_en: "Open Debate: Why Worse Is Better? Let's Talk About AI",
+    topic_es: "Debate abierto: ¿Por qué lo peor es mejor? Hablemos de IA",
+    description_en:
+      "Inspired by Richard P. Gabriel's classic essay \"The Rise of Worse Is Better,\" we'll explore why simple, pragmatic software keeps beating \"perfect\" solutions, from C vs. Lisp to today's AI-assisted development and vibe coding. Is the \"worse\" approach about to win again? Bring your questions, your skepticism, and your opinions. Let's debate!",
+    description_es:
+      "Inspirados en el clásico ensayo de Richard P. Gabriel \"The Rise of Worse Is Better\", exploraremos por qué el software simple y pragmático sigue superando a las soluciones \"perfectas\", desde C vs. Lisp hasta el desarrollo asistido por IA y el vibe coding de hoy. ¿Está el enfoque \"peor\" a punto de ganar otra vez? Trae tus preguntas, tu escepticismo y tus opiniones. ¡Debatamos!",
+    speakers: ["Emmanuel Zambrano"],
+    date: "2026-11-25",
+    scheduled_at: "2026-11-25T15:00:00-06:00",
+    time: "3:00 PM CST",
+    location: "Hybrid - Bogotá Wizeline offices & Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI"],
+    status: "upcoming",
+  },
+  {
+    number: "26",
+    topic_en: "AI at Work - SRE Week Edition: Lightning Talks",
+    topic_es: "AI at Work - Edición SRE Week: Lightning Talks",
+    description_en:
+      "Five lightning talks: AWS Bedrock AgentCore for building, managing, and scaling AI agents; tips and tricks to optimize Claude tokens and keep costs under control; Claude & I, a 10-minute guide to agents, named sessions, and useful commands; how to build a startup-quality app by orchestrating AI agents with Obsidian and Linear; and Infrastructure as Code, Intelligence as Skills, using Claude Code Skills to manage enterprise-level Terraform infrastructure.",
+    description_es:
+      "Cinco lightning talks: AWS Bedrock AgentCore para construir, gestionar y escalar agentes de IA; tips y trucos para optimizar los tokens de Claude y controlar costos; Claude & I, una guía de 10 minutos sobre agentes, sesiones con nombre y comandos útiles; cómo construir una app con calidad de startup orquestando agentes de IA con Obsidian y Linear; e Infrastructure as Code, Intelligence as Skills, usando Claude Code Skills para gestionar infraestructura Terraform empresarial.",
+    speakers: [
+      "Johan Romero",
+      "Maye Gomez",
+      "Carlos Perez",
+      "Edgar Talledos",
+      "Josué Ruiz",
+    ],
+    date: "2026-11-19",
+    scheduled_at: "2026-11-19T09:00:00-06:00",
+    time: "9:00 AM CST",
+    location: "Remote via Google Meet",
+    duration_minutes: 60,
+    tags: ["GenAI"],
+    status: "upcoming",
+  },
+  {
     number: "25",
     topic_en:
       "Orchestrating UX Processes, from Discovery to Implementation: Part 2 (Workshop)",
@@ -42,6 +82,58 @@ export const sessions: Session[] = [
     tags: ["GenAI"],
     status: "upcoming",
     image: assetUrl("Charlas/AI_at_Work-25.png"),
+    recording_url:
+      "https://drive.google.com/file/d/1KhmRpPYdEJgTcnngIVNqz5N_vx5H08rL/view",
+    slides_url:
+      "https://docs.google.com/presentation/d/10rjgpLVyzMbpeRW3lsv0zSbELLdep8E6/edit?slide=id.g3f8c75b6eae_0_2580#slide=id.g3f8c75b6eae_0_2580",
+  },
+  {
+    number: "24D",
+    topic_en: "AI at Work - SRE Week Edition: Managing Agents as the Matrix Movies for Clusters and VMs",
+    topic_es: "AI at Work - Edición SRE Week: Gestionando agentes como en Matrix para clústeres y VMs",
+    speakers: ["Dani", "Luis Hinojos"],
+    date: "2026-11-13",
+    tags: ["GenAI"],
+    status: "past",
+    recording_url:
+      "https://drive.google.com/file/d/1ePVtWhm8jN8HBqyNdmG42XrW2lpxOAsQ/view",
+  },
+  {
+    number: "24C",
+    topic_en: "AI at Work - SRE Week Edition: AI-DLC Framework in Action",
+    topic_es: "AI at Work - Edición SRE Week: El framework AI-DLC en acción",
+    speakers: ["Dani Martín", "Elias Segundo", "Axel de la Torre"],
+    date: "2026-11-11",
+    tags: ["GenAI"],
+    status: "past",
+    recording_url:
+      "https://drive.google.com/file/d/14QqBP6L77wV49hpNSvfd8ZdyN1hb9B5C/view?usp=sharing",
+  },
+  {
+    number: "24B",
+    topic_en: "AI at Work - SRE Week Edition: Hulu Agent Observability on Datadog",
+    topic_es: "AI at Work - Edición SRE Week: Observabilidad de agentes de Hulu en Datadog",
+    description_en:
+      "How to manage, observe, and act on your custom agent with real metrics and traces.",
+    description_es:
+      "Cómo gestionar, observar y actuar sobre tu agente personalizado con métricas y trazas reales.",
+    speakers: ["Jonathan Ramírez"],
+    date: "2026-11-10",
+    tags: ["GenAI"],
+    status: "past",
+  },
+  {
+    number: "24A",
+    topic_en: "AI at Work - SRE Week Edition: Hulu CLU-Tools",
+    topic_es: "AI at Work - Edición SRE Week: Hulu CLU-Tools",
+    description_en:
+      "CLU-Tools, an AI-powered support tool that addresses issues within Hulu's Video on Demand (VOD) pipeline.",
+    description_es:
+      "CLU-Tools, una herramienta de soporte impulsada por IA que resuelve incidencias en el pipeline de Video on Demand (VOD) de Hulu.",
+    speakers: ["Ramón Esparza", "Cesar Andrade"],
+    date: "2026-11-10",
+    tags: ["GenAI"],
+    status: "past",
   },
   {
     number: "24",
